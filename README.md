@@ -21,3 +21,8 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 * As a user I would like to see images from Wikipedia API on the tableview before opening the links
 * As a user I would like to be able to choose to receive a daily event notification.
 * As a user I would like my date selection to persist until the next day
+
+
+# Wireframe
+
+!(Wireframe)[wireframe.png]
