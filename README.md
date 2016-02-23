@@ -25,4 +25,4 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 # Wireframe
 
-!(Wireframe)[wireframe.png]
+![Wireframe](wireframe.png)
