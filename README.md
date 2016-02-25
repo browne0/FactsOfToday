@@ -18,11 +18,54 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 * As a user I would like to select color schemes
 * As a user I would like to use the 6s force touch to push and pop article links.
-* As a user I would like to see images from Wikipedia API on the tableview before opening the links
+* As a user I would like to see images from Wikipedia API on the tableview before opening the links.
 * As a user I would like to be able to choose to receive a daily event notification.
-* As a user I would like my date selection to persist until the next day
-
+* As a user I would like my date selection to persist until the next day.
+* As a user I would like to share information and links via Twitter.
 
 # Wireframe
 
 ![Wireframe](wireframe.png)
+
+
+# APIs
+
+* Today In History  (http://history.muffinlabs.com)
+  * History item model: information, year, array of links
+  * Link model: subject, title, link
+* Wikipedia         (https://www.mediawiki.org/wiki/API:Main_page)
+  * Only needed for article thumbnail
+
+### Possible Extra APIs
+
+* Numbers API       (http://numbersapi.com)
+  * Only returns text
+* Twitter API       (https://dev.twitter.com/rest/public)
+
+
+# Considerations
+
+### Pitch
+
+* We want to give the user perspective on history with a device that they use every day to provide daily information.
+
+### Stakeholders
+
+* Any iOS user could use this app to learn about important events and people in history. With information about each day, there are fewer events to be overwhelmed by and provide a reason to come back every day.
+
+### Core Flows
+
+* Key functions: Present information about what has happened each day in history.
+* Screens: Main screen with one sample event, birth, and death for that day. After clicking on any of the three objects, present a TableView with more information of that type. Each item will have links to Wikipedia which can be opened in a Safari view controller to get more in-depth information.
+
+### Final Demo
+
+* 
+
+### Mobile Features
+
+* 
+
+### Technical Concerns
+
+* 
