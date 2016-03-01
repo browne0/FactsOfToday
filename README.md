@@ -21,6 +21,7 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 * As a user I would like to see images from Wikipedia API on the tableview before opening the links.
 * As a user I would like to be able to choose to receive a daily event notification.
 * As a user I would like my date selection to persist until the next day.
+* As a user I would like to see the location an event took place on a map (for Wikipedia articles with the coordinates available)
 * As a user I would like to share information and links via Twitter.
 
 # Wireframe
@@ -41,7 +42,7 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 * Numbers API       (http://numbersapi.com)
   * Only returns text
 * Twitter API       (https://dev.twitter.com/rest/public)
-
+  * Twitter API helper class
 
 # Considerations
 
@@ -60,12 +61,31 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 ### Final Demo
 
-* 
+* Show the home page which shows an a few event examples for that day.
+* Open one of the event lists
+  * Scroll through the events provided by the API.
+  * Open a Wikipedia article from the events.
+  * (optional item) Show a map view where the event took place.
+  * (optional item) Tweet one of the events.
+* Return to the main page and start changing the current date
+  * Swipe left and right to change the selected date.
+  * Open the calendar to pick a different date further away.
+  * Tap the 'today' button to return to the current date.
+* Go to settings
+  * (optional item) Change the app's color scheme.
+  * Open acknowledgements page
+  * (optional item) Show notification settings.
+* (optional items) Go to the device settings and change the date.
+  * Receive a notification and go to the app.
+
 
 ### Mobile Features
 
-* 
+* Optional daily notifications of events.
+* Some Wikipedia articles have coordinates available which could be shown on a map.
 
 ### Technical Concerns
 
-* 
+* Using the Wikipedia API to get the article coordinates.
+* User selected color schemes could be at least tedious to set up.
+* Need to figure out how notifications work.
