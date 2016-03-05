@@ -1,0 +1,6 @@
+framework module Pods_FactsOfToday {
+  umbrella header "Pods-FactsOfToday-umbrella.h"
+
+  export *
+  module * { export * }
+}
