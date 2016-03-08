@@ -96,11 +96,8 @@
 		84B946621C864C7400D78BDE /* FactsOfToday */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
-=======
 				5BBB5C471C8BA3B30084D4D8 /* Model */,
->>>>>>> 821cc82b76e6f0dd01e09047319f69ece80aafc6
 				84B946631C864C7500D78BDE /* AppDelegate.swift */,
 				84B946671C864C7500D78BDE /* Main.storyboard */,
 				84B9466A1C864C7500D78BDE /* Assets.xcassets */,
@@ -234,16 +231,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */,
 				84B946801C8BB3F900D78BDE /* SwipeView.m in Sources */,
-=======
 				84B946661C864C7500D78BDE /* ViewController.swift in Sources */,
 				5BBB5C491C8BA3BF0084D4D8 /* Event.swift in Sources */,
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				5BBB5C4B1C8BA4650084D4D8 /* Link.swift in Sources */,
->>>>>>> 821cc82b76e6f0dd01e09047319f69ece80aafc6
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
