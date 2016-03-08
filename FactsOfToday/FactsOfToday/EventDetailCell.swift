@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import TTTAttributedLabel
 
 class EventDetailCell: UITableViewCell {
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var detailLabel: TTTAttributedLabel!
+    
     var event: Event! {
         didSet{
-            detailLabel.text = event.text
+            let text = NSString(string: event.text!)
+            detailLabel.text = text as String
+
+            if let links = event.links {
+                for link in links {
+                    if let linkStr = link.title {
+                        let range = text.rangeOfString(linkStr)
+                        let linkURL = link.url
+                        detailLabel.addLinkToURL(linkURL!, withRange: range)
+                    }
+                }
+            }
         }
     }
     

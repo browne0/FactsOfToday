@@ -76,22 +76,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="36.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CL3-iE-IXQ">
-                                                    <rect key="frame" x="8" y="8" width="312" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-h8-drO" customClass="TTTAttributedLabel">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CL3-iE-IXQ" firstAttribute="leading" secondItem="Z8M-Yj-dee" secondAttribute="leadingMargin" id="7ZJ-XZ-Sdp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="CL3-iE-IXQ" secondAttribute="bottom" id="gj7-6n-G8m"/>
-                                                <constraint firstItem="CL3-iE-IXQ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z8M-Yj-dee" secondAttribute="trailingMargin" id="kr5-IT-GVY"/>
-                                                <constraint firstItem="CL3-iE-IXQ" firstAttribute="top" secondItem="Z8M-Yj-dee" secondAttribute="topMargin" id="nff-Ki-S7S"/>
+                                                <constraint firstItem="H1i-h8-drO" firstAttribute="leading" secondItem="Z8M-Yj-dee" secondAttribute="leadingMargin" id="7eg-HL-DT0"/>
+                                                <constraint firstItem="H1i-h8-drO" firstAttribute="top" secondItem="Z8M-Yj-dee" secondAttribute="topMargin" id="bA3-Gl-Qgr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="H1i-h8-drO" secondAttribute="bottom" id="kWD-oI-EY6"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="H1i-h8-drO" secondAttribute="trailing" id="qab-Qi-jIf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="detailLabel" destination="CL3-iE-IXQ" id="xnf-05-YKN"/>
+                                            <outlet property="detailLabel" destination="H1i-h8-drO" id="BGg-YX-i7R"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

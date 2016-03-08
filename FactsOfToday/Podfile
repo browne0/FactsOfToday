@@ -6,5 +6,6 @@ use_frameworks!
 target 'FactsOfToday' do
 	pod 'Calendar-iOS'
 	pod 'AFNetworking'
+	pod 'TTTAttributedLabel'
 end
 
