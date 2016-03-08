@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 protocol DayPreviewDelegate {
 	func didSelectRow()
@@ -26,21 +27,13 @@ class DayPreviewView: UIView {
     }
     */
 	
-//	init() {
-//		super.init()
-//	}
-//	
-//	required init?(coder aDecoder: NSCoder) {
-//		super.init(coder: aDecoder)
-//	}
-
 	override func awakeFromNib() {
-		print("woke from nib")
 		tableView.delegate = self
 		tableView.dataSource = self
 		
 		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		tableView.reloadData()
+		
 	}
 }
 

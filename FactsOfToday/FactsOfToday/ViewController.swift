@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+		let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
+		let dayPreview = nibViewArray.objectAtIndex(0) as! DayPreviewView
+		view.addSubview(dayPreview)
     }
 
     override func didReceiveMemoryWarning() {
