@@ -26,7 +26,6 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         swipeView.delegate = self
         swipeView.dataSource = self
         swipeView.pagingEnabled = true
-        
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {

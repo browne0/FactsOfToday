@@ -260,7 +260,6 @@
 				84B946661C864C7500D78BDE /* ViewController.swift in Sources */,
 				5BBB5C491C8BA3BF0084D4D8 /* Event.swift in Sources */,
 				5BCC74E31C8F6F7E00F49EA7 /* DetailViewController.swift in Sources */,
-				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				5BBB5C4B1C8BA4650084D4D8 /* Link.swift in Sources */,
 				5BCC74E51C8F712500F49EA7 /* EventDetailCell.swift in Sources */,
 			);
