@@ -29,10 +29,15 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         for var i = 0; i < 100; i++ {
             items.append(Int(i))
         }
-        
+		
+		if currentDate == nil {
+			currentDate = NSDate()
+		}
+		
         swipeView.delegate = self
         swipeView.dataSource = self
         swipeView.pagingEnabled = true
+		swipeView.wrapEnabled = true
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
@@ -129,20 +134,4 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     }
     */
 
-}
-
-extension SwipeViewController: DayPreviewDelegate {
-    func didSelectRow(indexPath: NSIndexPath) {
-        print("delegate called")
-        self.performSegueWithIdentifier("ToDetailView", sender: indexPath)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ToDetailView" {
-            let indexPath = sender as! NSIndexPath
-//            let vc = segue.destinationViewController as! DetailViewController
-            print(indexPath.section)
-//            vc.events
-        }
-    }
 }

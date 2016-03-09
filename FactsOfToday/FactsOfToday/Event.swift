@@ -30,11 +30,17 @@ class Event {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MMMM d y"
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        if let date = formatter.dateFromString(dateString) {
-            return date
-        } else {
-            return NSDate()
-        }
+        var date = formatter.dateFromString(dateString)
+		if date == nil {
+			formatter.dateFormat = "MMMM d y GG"
+			date = formatter.dateFromString(dateString)!
+		}
+		//Still nil after attempt with BC added
+		if date == nil {
+			return NSDate()
+		}
+		
+        return date
     }
     
     // all types are force unwrapped
