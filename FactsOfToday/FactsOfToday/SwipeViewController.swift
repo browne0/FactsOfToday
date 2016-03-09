@@ -12,6 +12,8 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 
     @IBOutlet weak var swipeView: SwipeView!
     var items: [AnyObject] = [AnyObject]()
+	
+	var currentDate: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,26 +32,30 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
         
-        var label: UILabel? = nil
-        
+//        var label: UILabel? = nil
+		
         if view == nil {
             
-            view = UIView(frame: self.swipeView.bounds)
-            view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            label = UILabel(frame: view.bounds)
-            label!.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            label!.backgroundColor = UIColor.clearColor()
-            label!.textAlignment = .Center
-            label!.font = label!.font.fontWithSize(50)
-            label!.tag = 1
-            view.addSubview(label!)
+//            view = UIView(frame: self.swipeView.bounds)
+//            view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+//            label = UILabel(frame: view.bounds)
+//            label!.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+//            label!.backgroundColor = UIColor.clearColor()
+//            label!.textAlignment = .Center
+//            label!.font = label!.font.fontWithSize(50)
+//            label!.tag = 1
+//            view.addSubview(label!)
+			
+			let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
+			view = nibViewArray.objectAtIndex(0) as! DayPreviewView
+			
         } else {
             //get a reference to the label in the recycled view
-            label = (view.viewWithTag(1) as! UILabel)
+//            label = (view.viewWithTag(1) as! UILabel)
         }
         
-        label!.text = items[index].stringValue
-        
+//        label!.text = items[index].stringValue
+		
         return view
     }
     
