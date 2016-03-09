@@ -28,10 +28,13 @@ class Event {
     
     private func getTimeWithString(dateString: String)->NSDate! {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMMM d yyyy"
+        formatter.dateFormat = "MMMM d y"
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        let date = formatter.dateFromString(dateString)!
-        return date
+        if let date = formatter.dateFromString(dateString) {
+            return date
+        } else {
+            return NSDate()
+        }
     }
     
     // all types are force unwrapped
