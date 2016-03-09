@@ -28,11 +28,11 @@ class Event {
     
     private func getTimeWithString(dateString: String)->NSDate! {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMMM d yyyy"
+        formatter.dateFormat = "MMMM d y"
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         var date = formatter.dateFromString(dateString)
 		if date == nil {
-			formatter.dateFormat = "MMMM d yyyy GG"
+			formatter.dateFormat = "MMMM d y GG"
 			date = formatter.dateFromString(dateString)!
 		}
 		
@@ -69,8 +69,14 @@ class Event {
 				previousYear = year
 			}
 			
+			//TODO: handle missing years better.
+			if year == "0" {
+				print("zero year")
+				year = "1"
+			}
+			
 			var text: String?
-			if event_dic["text"] == nil {
+			if event_dic["text"]!.isKindOfClass(NSNull) {
 				text = event_dic["year"] as? String
 			} else {
 				text = event_dic["text"] as? String

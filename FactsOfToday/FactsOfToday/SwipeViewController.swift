@@ -8,13 +8,17 @@
 
 import UIKit
 
-class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource {
+class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate {
 
     @IBOutlet weak var swipeView: SwipeView!
     var items: [AnyObject] = [AnyObject]()
 	
 	var currentDate: NSDate?
 	var previousPosition = 0
+	
+	//TODO: is there a better way to do this?
+	//The method for the current view being changed isn't called for the first view loaded
+	var firstDate = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,56 +41,46 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
-        
-//        var label: UILabel? = nil
 		
         if view == nil {
-            
-//            view = UIView(frame: self.swipeView.bounds)
-//            view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-//            label = UILabel(frame: view.bounds)
-//            label!.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-//            label!.backgroundColor = UIColor.clearColor()
-//            label!.textAlignment = .Center
-//            label!.font = label!.font.fontWithSize(50)
-//            label!.tag = 1
-//            view.addSubview(label!)
-			
 			let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
 			view = nibViewArray.objectAtIndex(0) as! DayPreviewView
 			
-        } else {
-            //get a reference to the label in the recycled view
-//            label = (view.viewWithTag(1) as! UILabel)
+			(view as! DayPreviewView).delegate = self
         }
 		
-		print("current position: \(index), previous position: \(previousPosition)")
-//		if (previousPosition + 1) % 3 > (index + 1) % 3 {
-//			//Moved Backward
-//			print("moved back")
-//			currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
-//		
-//		} else if previousPosition == index {
-//			//Don't change date
-//			print("no date change")
-//		} else {
-//			//Moved Forward
-//			print("moved forward")
-//			currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
-//		}
+		if firstDate {
+			firstDate = false
+			
+			let printFormatter = NSDateFormatter()
+			printFormatter.dateFormat = "MMM, d"
+			title = printFormatter.stringFromDate(currentDate!)
+			
+			let formatter = NSDateFormatter()
+			formatter.dateFormat = "M"
+			let month = formatter.stringFromDate(currentDate!)
+			formatter.dateFormat = "d"
+			let day = formatter.stringFromDate(currentDate!)
+			(view as! DayPreviewView).reloadData(month, day: day)
+		} else {
+			(view as! DayPreviewView).clearData()
+		}
 		
+		
+        return view
+    }
+	
+	func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+		let index = swipeView.currentItemIndex
+		let view = swipeView.itemViewAtIndex(index)
 		
 		if previousPosition == 0 && index == 2 {
-			print("moved back")
 			decrementDate()
 		} else if previousPosition == 2 && index == 0 {
-			print("moved forward")
 			incrementDate()
 		} else if previousPosition < index {
-			print("moved forward")
 			incrementDate()
 		} else if previousPosition > index {
-			print("moved back")
 			decrementDate()
 		}
 		
@@ -103,10 +97,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 		formatter.dateFormat = "d"
 		let day = formatter.stringFromDate(currentDate!)
 		(view as! DayPreviewView).reloadData(month, day: day)
-//        label!.text = items[index].stringValue
-		
-        return view
-    }
+	}
     
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return 3
@@ -127,6 +118,10 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 	
 	func decrementDate() {
 		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+	}
+	
+	func didSelectRow(eventList: [Event]?) {
+		//TODO: open list to show more events and pass this data
 	}
 
     /*

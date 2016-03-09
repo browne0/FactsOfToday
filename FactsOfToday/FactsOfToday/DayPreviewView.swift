@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 
 protocol DayPreviewDelegate {
-	func didSelectRow()
+	func didSelectRow(eventList: [Event]?)
 }
 
 class DayPreviewView: UIView {
@@ -47,6 +47,14 @@ class DayPreviewView: UIView {
 		if month != nil && day != nil {
 			downloadData(month!, day: day!)
 		}
+	}
+	
+	func clearData() {
+		events = nil
+		births = nil
+		deaths = nil
+		
+		tableView.reloadData()
 	}
 	
 	func reloadData(month: String, day: String) {
@@ -99,7 +107,7 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell")
 		cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-		cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+		cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByTruncatingTail
 		cell?.textLabel?.numberOfLines = 3
 		
 		cell?.userInteractionEnabled = true
@@ -148,7 +156,15 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: false)
-		delegate?.didSelectRow()
+		switch indexPath.row {
+		case 0:
+			delegate?.didSelectRow(events)
+		case 1:
+			delegate?.didSelectRow(births)
+		case 2:
+			delegate?.didSelectRow(deaths)
+		default: break
+		}
 	}
 	
 	
