@@ -36,8 +36,13 @@ class Event {
     
     // all types are force unwrapped
     // more testing needed
-    func getEventObjectsWithDictionary(dictionary: NSDictionary, type: Type)->[Event]? {
+    class func getEventObjectsWithDictionary(dictionary: NSDictionary, type: Type)->[Event]? {
         let date = dictionary["date"] as? String
+		
+		if date == nil {
+			return nil
+		}
+		
         var events_dic: [NSDictionary]
         if type == Type.EVENT {
             events_dic = (dictionary["data"] as! NSDictionary)["Events"] as! [NSDictionary]
@@ -50,7 +55,12 @@ class Event {
         var events = [Event]()
         for event_dic in events_dic {
             let year = event_dic["year"] as? String
-            let event = Event(time: "\(date) \(year)", text: event_dic["text"] as? String, type: type)
+			
+			if year == nil {
+				continue
+			}
+			
+            let event = Event(time: "\(date!) \(year!)", text: event_dic["text"] as? String, type: type)
             let links_dic = event_dic["links"] as! [NSDictionary]
             var links = [Link]()
             for link_dic in links_dic {

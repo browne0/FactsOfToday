@@ -19,6 +19,13 @@ class DayPreviewView: UIView {
 	
 	var delegate: DayPreviewDelegate?
 	
+	var month: String?
+	var day: String?
+	
+	var events: [Event]?
+	var births: [Event]?
+	var deaths: [Event]?
+	
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -34,6 +41,21 @@ class DayPreviewView: UIView {
 		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		tableView.reloadData()
 		
+		if month != nil && day != nil {
+			HistoryClient.getEventsByDate(month!, day: day!) { (events, births, deaths) -> () in
+				self.events = events
+				self.births = births
+				self.deaths = deaths
+				self.tableView.reloadData()
+			}
+		} else {
+			HistoryClient.getEventsByDate("3", day: "8") { (events, births, deaths) -> () in
+				self.events = events
+				self.births = births
+				self.deaths = deaths
+				self.tableView.reloadData()
+			}
+		}
 	}
 }
 
@@ -66,7 +88,31 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 		cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
 		cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
 		cell?.textLabel?.numberOfLines = 0
-		cell!.textLabel?.text = "test with a longer message that will hopefully wrap around to be on a new line and not cover the arrow"
+//		cell!.textLabel?.text = "test with a longer message that will hopefully wrap around to be on a new line and not cover the arrow"
+		
+		switch indexPath.section {
+		case 0:
+			if events != nil {
+				cell?.textLabel?.text = events![0].text
+			} else {
+				cell?.textLabel?.text = "Loading..."
+			}
+		case 1:
+			if births != nil {
+				cell?.textLabel?.text = births![0].text
+			} else {
+				cell?.textLabel?.text = "Loading..."
+			}
+		case 2:
+			if deaths != nil {
+				cell?.textLabel?.text = deaths![0].text
+			} else {
+				cell?.textLabel?.text = "Loading..."
+			}
+		default:
+			cell?.textLabel?.text = "Something went wrong"
+		}
+		
 		return cell!
 	}
 	
