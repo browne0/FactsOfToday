@@ -121,17 +121,14 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 	}
 	
 	func didSelectRow(eventList: [Event]?) {
-		//TODO: open list to show more events and pass this data
+        self.performSegueWithIdentifier("ToDetailView", sender: eventList)
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ToDetailView" {
+            let events = sender as? [Event]
+            let vc = segue.destinationViewController as! DetailViewController
+            vc.events = events
+        }
     }
-    */
-
 }
