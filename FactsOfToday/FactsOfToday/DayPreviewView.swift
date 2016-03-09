@@ -38,23 +38,44 @@ class DayPreviewView: UIView {
 		tableView.delegate = self
 		tableView.dataSource = self
 		
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 80
+		
 		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		tableView.reloadData()
 		
 		if month != nil && day != nil {
-			HistoryClient.getEventsByDate(month!, day: day!) { (events, births, deaths) -> () in
-				self.events = events
-				self.births = births
-				self.deaths = deaths
-				self.tableView.reloadData()
-			}
-		} else {
-			HistoryClient.getEventsByDate("3", day: "8") { (events, births, deaths) -> () in
-				self.events = events
-				self.births = births
-				self.deaths = deaths
-				self.tableView.reloadData()
-			}
+			downloadData(month!, day: day!)
+		}
+	}
+	
+	func clearData() {
+		events = nil
+		births = nil
+		deaths = nil
+		
+		tableView.reloadData()
+	}
+	
+	func reloadData(month: String, day: String) {
+		self.month = month
+		self.day = day
+		
+		events = nil
+		births = nil
+		deaths = nil
+		
+		tableView.reloadData()
+		
+		downloadData(month, day: day)
+	}
+	
+	func downloadData(month: String, day: String) {
+		HistoryClient.getEventsByDate(month, day: day) { (events, births, deaths) -> () in
+			self.events = events
+			self.births = births
+			self.deaths = deaths
+			self.tableView.reloadData()
 		}
 	}
 }
@@ -86,26 +107,39 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell")
 		cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-		cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-		cell?.textLabel?.numberOfLines = 0
-//		cell!.textLabel?.text = "test with a longer message that will hopefully wrap around to be on a new line and not cover the arrow"
+		cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+		cell?.textLabel?.numberOfLines = 3
+		
+		cell?.userInteractionEnabled = true
 		
 		switch indexPath.section {
 		case 0:
-			if events != nil {
+			if events != nil && events?.count > 0 {
 				cell?.textLabel?.text = events![0].text
+			} else if events?.count == 0 {
+				cell?.accessoryType = UITableViewCellAccessoryType.None
+				cell?.userInteractionEnabled = false
+				cell?.textLabel?.text = "Nothing here today"
 			} else {
 				cell?.textLabel?.text = "Loading..."
 			}
 		case 1:
-			if births != nil {
+			if births != nil && births?.count > 0 {
 				cell?.textLabel?.text = births![0].text
+			} else if births?.count == 0 {
+				cell?.accessoryType = UITableViewCellAccessoryType.None
+				cell?.userInteractionEnabled = false
+				cell?.textLabel?.text = "Nothing here today"
 			} else {
 				cell?.textLabel?.text = "Loading..."
 			}
 		case 2:
-			if deaths != nil {
+			if deaths != nil && deaths?.count > 0 {
 				cell?.textLabel?.text = deaths![0].text
+			} else if deaths?.count == 0 {
+				cell?.accessoryType = UITableViewCellAccessoryType.None
+				cell?.userInteractionEnabled = false
+				cell?.textLabel?.text = "Nothing here today"
 			} else {
 				cell?.textLabel?.text = "Loading..."
 			}
@@ -117,12 +151,7 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		let text = "test with a longer message that will hopefully wrap around to be on a new line and not cover the arrow"
-		let attributedText = NSAttributedString(string: text, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(UIFont.systemFontSize())])
-		
-		let rect = attributedText.boundingRectWithSize(CGSizeMake(tableView.bounds.size.width, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
-		
-		return rect.size.height + 40
+		return UITableViewAutomaticDimension
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
