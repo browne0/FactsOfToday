@@ -9,8 +9,8 @@
 import UIKit
 import AFNetworking
 
-protocol DayPreviewDelegate {
-	func didSelectRow()
+protocol DayPreviewDelegate: class {
+    func didSelectRow(indexPath: NSIndexPath)
 }
 
 class DayPreviewView: UIView {
@@ -126,9 +126,12 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("selected")
+        delegate?.didSelectRow(indexPath)
+        if delegate == nil {
+            print("it's nil!")
+        }
+
 		tableView.deselectRowAtIndexPath(indexPath, animated: false)
-		delegate?.didSelectRow()
 	}
-	
-	
 }

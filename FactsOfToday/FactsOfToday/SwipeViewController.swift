@@ -84,3 +84,19 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     */
 
 }
+
+extension SwipeViewController: DayPreviewDelegate {
+    func didSelectRow(indexPath: NSIndexPath) {
+        print("delegate called")
+        self.performSegueWithIdentifier("ToDetailView", sender: indexPath)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ToDetailView" {
+            let indexPath = sender as! NSIndexPath
+//            let vc = segue.destinationViewController as! DetailViewController
+            print(indexPath.section)
+//            vc.events
+        }
+    }
+}

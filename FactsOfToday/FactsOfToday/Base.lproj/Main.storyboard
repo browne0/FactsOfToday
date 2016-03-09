@@ -20,15 +20,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-xU-VnT" customClass="SwipeView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5X-PA-8M6">
-                                        <rect key="frame" x="266" y="466" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="hwg-ga-sBz" kind="show" id="Rph-EG-sbr"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -164,7 +155,4 @@
             <point key="canvasLocation" x="432" y="125"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="22L-1R-FFd"/>
-    </inferredMetricsTieBreakers>
 </document>
