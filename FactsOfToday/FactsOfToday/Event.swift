@@ -30,7 +30,12 @@ class Event {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MMMM d yyyy"
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        let date = formatter.dateFromString(dateString)!
+        var date = formatter.dateFromString(dateString)
+		if date == nil {
+			formatter.dateFormat = "MMMM d yyyy GG"
+			date = formatter.dateFromString(dateString)!
+		}
+		
         return date
     }
     
@@ -53,14 +58,26 @@ class Event {
         }
         
         var events = [Event]()
+		var previousYear = "0"
         for event_dic in events_dic {
-            let year = event_dic["year"] as? String
+            var year = event_dic["year"] as! String
 			
-			if year == nil {
-				continue
+			//Some deaths are grouped together under an event and the text value will be put into the year (why) and the text is null
+			if event_dic["text"]!.isKindOfClass(NSNull) {
+				year = previousYear
+			} else {
+				previousYear = year
 			}
 			
-            let event = Event(time: "\(date!) \(year!)", text: event_dic["text"] as? String, type: type)
+			var text: String?
+			if event_dic["text"] == nil {
+				text = event_dic["year"] as? String
+			} else {
+				text = event_dic["text"] as? String
+			}
+			
+			
+            let event = Event(time: "\(date!) \(year)", text: text, type: type)
             let links_dic = event_dic["links"] as! [NSDictionary]
             var links = [Link]()
             for link_dic in links_dic {

@@ -14,6 +14,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     var items: [AnyObject] = [AnyObject]()
 	
 	var currentDate: NSDate?
+	var previousPosition = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +25,15 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         for var i = 0; i < 100; i++ {
             items.append(Int(i))
         }
-        
-        swipeView.delegate = self
-        swipeView.dataSource = self
-        swipeView.pagingEnabled = true
 		
 		if currentDate == nil {
 			currentDate = NSDate()
 		}
+		
+        swipeView.delegate = self
+        swipeView.dataSource = self
+        swipeView.pagingEnabled = true
+		swipeView.wrapEnabled = true
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
@@ -57,14 +59,57 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
             //get a reference to the label in the recycled view
 //            label = (view.viewWithTag(1) as! UILabel)
         }
-        
+		
+		print("current position: \(index), previous position: \(previousPosition)")
+//		if (previousPosition + 1) % 3 > (index + 1) % 3 {
+//			//Moved Backward
+//			print("moved back")
+//			currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+//		
+//		} else if previousPosition == index {
+//			//Don't change date
+//			print("no date change")
+//		} else {
+//			//Moved Forward
+//			print("moved forward")
+//			currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+//		}
+		
+		
+		if previousPosition == 0 && index == 2 {
+			print("moved back")
+			decrementDate()
+		} else if previousPosition == 2 && index == 0 {
+			print("moved forward")
+			incrementDate()
+		} else if previousPosition < index {
+			print("moved forward")
+			incrementDate()
+		} else if previousPosition > index {
+			print("moved back")
+			decrementDate()
+		}
+		
+		
+		previousPosition = index
+		let printFormatter = NSDateFormatter()
+		printFormatter.dateFormat = "MMM, d"
+		
+		title = printFormatter.stringFromDate(currentDate!)
+		
+		let formatter = NSDateFormatter()
+		formatter.dateFormat = "M"
+		let month = formatter.stringFromDate(currentDate!)
+		formatter.dateFormat = "d"
+		let day = formatter.stringFromDate(currentDate!)
+		(view as! DayPreviewView).reloadData(month, day: day)
 //        label!.text = items[index].stringValue
 		
         return view
     }
     
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
-        return items.count
+        return 3
     }
     
     func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
@@ -75,7 +120,14 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	func incrementDate() {
+		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+	}
+	
+	func decrementDate() {
+		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+	}
 
     /*
     // MARK: - Navigation
