@@ -28,8 +28,6 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 ![Wireframe](wireframe.png)
 
-# Demos
-![sprint1-demo](https://github.com/browne0/FactsOfToday/blob/master/factsoftoday-demo.gif)
 
 # APIs
 
@@ -95,6 +93,6 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 ## Video Walkthrough - Part 1
 
-![walkthrough 1](http://i.imgur.com/jEZlneV.gif)
+![sprint1-demo](https://github.com/browne0/FactsOfToday/blob/master/factsoftoday-demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
