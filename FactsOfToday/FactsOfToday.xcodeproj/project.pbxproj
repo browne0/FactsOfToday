@@ -87,8 +87,8 @@
 		5BCC74E61C8F754700F49EA7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84B946651C864C7500D78BDE /* ViewController.swift */,
 				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
+				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -145,7 +145,6 @@
 				5BBB5C471C8BA3B30084D4D8 /* Model */,
 				5BCC74E61C8F754700F49EA7 /* ViewControllers */,
 				5BCC74E71C8F754F00F49EA7 /* Cells */,
-				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
 				84B946631C864C7500D78BDE /* AppDelegate.swift */,
 				84B946671C864C7500D78BDE /* Main.storyboard */,
 				84B9466A1C864C7500D78BDE /* Assets.xcassets */,

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Calendar_iOS
 
-class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate {
+class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate, UIPopoverPresentationControllerDelegate, CalendarViewDelegate {
 
     @IBOutlet weak var swipeView: SwipeView!
     var items: [AnyObject] = [AnyObject]()
+    let calendarViewController: UIViewController = UIViewController()
 	
 	var currentDate: NSDate?
 	var previousPosition = 0
@@ -38,6 +40,55 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         swipeView.dataSource = self
         swipeView.pagingEnabled = true
 		swipeView.wrapEnabled = true
+        
+        createCalendarView()
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
+    
+    @IBAction func onTap(sender: AnyObject) {
+        let popoverMenuViewController = calendarViewController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = .Any
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = sender as? UIView
+        popoverMenuViewController?.sourceRect = CGRect(x: sender.center.x - CGFloat(15), y: sender.center.y, width: CGFloat(1), height: CGFloat(1))
+        presentViewController(calendarViewController, animated: true, completion: nil)
+        
+    }
+    func createCalendarView() {
+        
+        let calendarView: CalendarView = CalendarView()
+        calendarView.shouldShowHeaders = true
+        calendarView.calendarDelegate = self;
+        
+        calendarViewController.modalPresentationStyle = .Popover
+        calendarViewController.preferredContentSize = CGSizeMake(350, calendarView.bounds.height+12.5)
+        calendarViewController.view = calendarView
+        calendarViewController.view.bounds = CGRectInset(view.frame, -CGFloat(12.5), -CGFloat(15));
+        
+    }
+    
+    func didChangeCalendarDate(date: NSDate!) {
+//        currentDate = date;
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+//        let printFormatter = NSDateFormatter()
+//        printFormatter.dateFormat = "MMM, d"
+//        title = printFormatter.stringFromDate(currentDate!)
+//        
+//        let formatter = NSDateFormatter()
+//        formatter.dateFormat = "M"
+//        let month = formatter.stringFromDate(currentDate!)
+//        formatter.dateFormat = "d"
+//        let day = formatter.stringFromDate(currentDate!)
+//        
+//        let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
+//        view = nibViewArray.objectAtIndex(0) as! DayPreviewView
+//        
+//        
+//        (self.view as! DayPreviewView).reloadData(month, day: day)
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {

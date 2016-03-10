@@ -18,13 +18,13 @@ static const CGFloat kCalendarViewDayCellOffset      = 5;
 
 static const CGFloat kCalendarViewMonthCellWidth     = 90;
 static const CGFloat kCalendarViewMonthCellHeight    = 30;
-static const CGFloat kCalendarViewMonthTitleOffsetY  = 50;
+static const CGFloat kCalendarViewMonthTitleOffsetY  = 30;
 static const CGFloat kCalendarViewMonthYStep         = 60;
 static const NSInteger kCalendarViewMonthInLine      = 3;
 
 static const CGFloat kCalendarViewYearCellWidth      = 54;
 static const CGFloat kCalendarViewYearCellHeight     = 30;
-static const CGFloat kCalendarViewYearTitleOffsetY   = 50;
+static const CGFloat kCalendarViewYearTitleOffsetY   = 30;
 static const CGFloat kCalendarViewYearYStep          = 45;
 static const NSInteger kCalendarViewYearsAround      = 12;
 static const NSInteger kCalendarViewYearsInLine      = 5;
@@ -36,7 +36,7 @@ static const CGFloat kCalendarViewYearLabelWidth     = 40;
 static const CGFloat kCalendarViewYearLabelHeight    = 20;
 
 static const CGFloat kCalendarViewWeekDaysYOffset    = 30;
-static const CGFloat kCalendarViewDaysYOffset        = 60;
+static const CGFloat kCalendarViewDaysYOffset        = 55;
 
 static NSString * const kCalendarViewDefaultFont     = @"TrebuchetMS";
 static const CGFloat kCalendarViewDayFontSize        = 16;
@@ -48,8 +48,8 @@ static const NSInteger kCalendarViewMaxLinesCount    = 6;
 
 static const CGFloat kCalendarViewSelectionRound     = 3.0;
 
-static const NSTimeInterval kCalendarViewSwipeMonthFadeInTime  = 0.2;
-static const NSTimeInterval kCalendarViewSwipeMonthFadeOutTime = 0.6;
+static const NSTimeInterval kCalendarViewSwipeMonthFadeInTime  = 0.4;
+static const NSTimeInterval kCalendarViewSwipeMonthFadeOutTime = 0.4;
 
 @implementation CalendarViewRect;
 
@@ -439,7 +439,7 @@ static const NSTimeInterval kCalendarViewSwipeMonthFadeOutTime = 0.6;
     if (self.shouldShowHeaders) {
         return  kCalendarViewDaysYOffset;
     } else {
-        return kCalendarViewDaysYOffset - kCalendarViewWeekDaysYOffset;
+        return kCalendarViewDaysYOffset;
     }
 }
 
@@ -448,7 +448,7 @@ static const NSTimeInterval kCalendarViewSwipeMonthFadeOutTime = 0.6;
     if (self.shouldShowHeaders) {
         return kCalendarViewMonthTitleOffsetY;
     } else {
-        return 0;
+        return kCalendarViewMonthTitleOffsetY;
     }
 }
 
@@ -456,7 +456,9 @@ static const NSTimeInterval kCalendarViewSwipeMonthFadeOutTime = 0.6;
 {
     if (self.shouldShowHeaders) {
         return kCalendarViewYearTitleOffsetY;
-    } else return 0;
+    } else {
+        return kCalendarViewYearTitleOffsetY;
+    }
 }
 
 #pragma mark - Drawing
