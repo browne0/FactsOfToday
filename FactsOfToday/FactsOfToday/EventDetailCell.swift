@@ -42,8 +42,9 @@ class EventDetailCell: UITableViewCell {
 extension EventDetailCell: TTTAttributedLabelDelegate {
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
         print(url)
-        let webView = UIWebView(frame: self.superview!.frame)
-        webView.loadRequest(NSURLRequest(URL: url))
-        self.superview!.addSubview(webView)
+        UIApplication.sharedApplication().openURL(url)
+//        let webView = UIWebView(frame: self.superview!.frame)
+//        webView.loadRequest(NSURLRequest(URL: url))
+//        self.superview!.addSubview(webView)
     }
 }
