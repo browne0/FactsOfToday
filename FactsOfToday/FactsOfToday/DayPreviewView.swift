@@ -68,7 +68,22 @@ class DayPreviewView: UIView {
 		tableView.reloadData()
 		
 		downloadData(month, day: day)
+        
 	}
+    
+    func reloadDataOnCalendar(month: String, day: String, view: SwipeView) {
+        self.month = month
+        self.day = day
+        
+        events = nil
+        births = nil
+        deaths = nil
+        
+        view.reloadData()
+        tableView.reloadData()
+        
+        downloadData(month, day: day)
+    }
 	
 	func downloadData(month: String, day: String) {
 		HistoryClient.getEventsByDate(month, day: day) { (events, births, deaths) -> () in

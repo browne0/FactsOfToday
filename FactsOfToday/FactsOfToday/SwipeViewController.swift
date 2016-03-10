@@ -17,32 +17,11 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 	
 	var currentDate: NSDate?
 	var previousPosition = 0
+    var firstLoad = true
 	
 	//TODO: is there a better way to do this?
 	//The method for the current view being changed isn't called for the first view loaded
 	var firstDate = true
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        self.items = NSMutableArray() as [AnyObject]
-        for var i = 0; i < 100; i++ {
-            items.append(Int(i))
-        }
-		
-		if currentDate == nil {
-			currentDate = NSDate()
-		}
-		
-        swipeView.delegate = self
-        swipeView.dataSource = self
-        swipeView.pagingEnabled = true
-		swipeView.wrapEnabled = true
-        
-        createCalendarView()
-    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
@@ -71,9 +50,13 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     }
     
     func didChangeCalendarDate(date: NSDate!) {
-//        currentDate = date;
+        currentDate = date;
         self.dismissViewControllerAnimated(true, completion: nil)
-        
+        print(currentDate)
+        let components: NSDateComponents = NSCalendar.currentCalendar().components([.Day, .Month, .Year], fromDate: currentDate!)
+        let year = components.year
+
+        print(year)
 //        let printFormatter = NSDateFormatter()
 //        printFormatter.dateFormat = "MMM, d"
 //        title = printFormatter.stringFromDate(currentDate!)
@@ -88,7 +71,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 //        view = nibViewArray.objectAtIndex(0) as! DayPreviewView
 //        
 //        
-//        (self.view as! DayPreviewView).reloadData(month, day: day)
+//        (self.view as! DayPreviewView).reloadDataOnCalendar(month, day: day, view: swipeView)
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
@@ -174,6 +157,31 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 	func didSelectRow(eventList: [Event]?) {
         self.performSegueWithIdentifier("ToDetailView", sender: eventList)
 	}
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        
+        if firstLoad {
+        self.items = NSMutableArray() as [AnyObject]
+        for var i = 0; i < 100; i++ {
+            items.append(Int(i))
+        }
+        
+        if currentDate == nil {
+            currentDate = NSDate()
+        }
+        
+        swipeView.delegate = self
+        swipeView.dataSource = self
+        swipeView.pagingEnabled = true
+        swipeView.wrapEnabled = true
+        
+        createCalendarView()
+        firstLoad = false
+        }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToDetailView" {
