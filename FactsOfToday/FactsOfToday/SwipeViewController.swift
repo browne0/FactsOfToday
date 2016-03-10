@@ -50,28 +50,34 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     }
     
     func didChangeCalendarDate(date: NSDate!) {
+        return
+    }
+    
+    func didDoubleTapCalendar(date: NSDate!, withType type: Int) {
         currentDate = date;
         self.dismissViewControllerAnimated(true, completion: nil)
         print(currentDate)
         let components: NSDateComponents = NSCalendar.currentCalendar().components([.Day, .Month, .Year], fromDate: currentDate!)
         let year = components.year
-
+        
         print(year)
-//        let printFormatter = NSDateFormatter()
-//        printFormatter.dateFormat = "MMM, d"
-//        title = printFormatter.stringFromDate(currentDate!)
-//        
-//        let formatter = NSDateFormatter()
-//        formatter.dateFormat = "M"
-//        let month = formatter.stringFromDate(currentDate!)
-//        formatter.dateFormat = "d"
-//        let day = formatter.stringFromDate(currentDate!)
-//        
-//        let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
-//        view = nibViewArray.objectAtIndex(0) as! DayPreviewView
-//        
-//        
-//        (self.view as! DayPreviewView).reloadDataOnCalendar(month, day: day, view: swipeView)
+        self.dismissViewControllerAnimated(true, completion: nil)
+
+        //        let printFormatter = NSDateFormatter()
+        //        printFormatter.dateFormat = "MMM, d"
+        //        title = printFormatter.stringFromDate(currentDate!)
+        //
+        //        let formatter = NSDateFormatter()
+        //        formatter.dateFormat = "M"
+        //        let month = formatter.stringFromDate(currentDate!)
+        //        formatter.dateFormat = "d"
+        //        let day = formatter.stringFromDate(currentDate!)
+        //
+        //        let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
+        //        view = nibViewArray.objectAtIndex(0) as! DayPreviewView
+        //        
+        //        
+        //        (self.view as! DayPreviewView).reloadDataOnCalendar(month, day: day, view: swipeView)
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
