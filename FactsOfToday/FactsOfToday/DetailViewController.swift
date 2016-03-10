@@ -20,18 +20,18 @@ class DetailViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
         
-        HistoryClient.getEventsByDate("6", day: "1") { (events, births, deaths) -> () in
-            if let events = events {
-                self.events = events
-                self.tableView.reloadData()
-            } else if let events = births {
-                self.events = events
-                self.tableView.reloadData()
-            } else if let events = deaths {
-                self.events = events
-                self.tableView.reloadData()
-            }
-        }
+//        HistoryClient.getEventsByDate("6", day: "1") { (events, births, deaths) -> () in
+//            if let events = events {
+//                self.events = events
+//                self.tableView.reloadData()
+//            } else if let events = births {
+//                self.events = events
+//                self.tableView.reloadData()
+//            } else if let events = deaths {
+//                self.events = events
+//                self.tableView.reloadData()
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -31,9 +31,19 @@ class EventDetailCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        detailLabel.delegate = self
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+}
+
+extension EventDetailCell: TTTAttributedLabelDelegate {
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        print(url)
+        let webView = UIWebView(frame: self.superview!.frame)
+        webView.loadRequest(NSURLRequest(URL: url))
+        self.superview!.addSubview(webView)
     }
 }
