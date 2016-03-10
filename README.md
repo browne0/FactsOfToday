@@ -28,6 +28,8 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 ![Wireframe](wireframe.png)
 
+# Demos
+![sprint1-demo](https://github.com/browne0/FactsOfToday/blob/master/factsoftoday-demo.gif)
 
 # APIs
 
