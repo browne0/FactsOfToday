@@ -11,6 +11,7 @@
 		207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A9D1F1C8F84730040C4FA /* HistoryClient.swift */; };
 		208658D61C8CB6D30088A06D /* DayPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208658D51C8CB6D30088A06D /* DayPreviewView.swift */; };
 		48B7D524699ABA962E83BCA6 /* Pods_FactsOfToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457D97927ABB94A106940C00 /* Pods_FactsOfToday.framework */; };
+		5B85BE841CA1E3F2000E6D44 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */; };
 		5BBB5C491C8BA3BF0084D4D8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB5C481C8BA3BF0084D4D8 /* Event.swift */; };
 		5BBB5C4B1C8BA4650084D4D8 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB5C4A1C8BA4650084D4D8 /* Link.swift */; };
 		5BCC74E31C8F6F7E00F49EA7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */; };
@@ -31,6 +32,7 @@
 		2F59758232D316F0126C5E96 /* Pods-FactsOfToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsOfToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday.debug.xcconfig"; sourceTree = "<group>"; };
 		3068870F561D196FA0A69D81 /* Pods-FactsOfToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsOfToday.release.xcconfig"; path = "Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday.release.xcconfig"; sourceTree = "<group>"; };
 		457D97927ABB94A106940C00 /* Pods_FactsOfToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsOfToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		5BBB5C481C8BA3BF0084D4D8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5BBB5C4A1C8BA4650084D4D8 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
+				5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */,
 				84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */,
+				5B85BE841CA1E3F2000E6D44 /* WebViewController.swift in Sources */,
 				84B946801C8BB3F900D78BDE /* SwipeView.m in Sources */,
 				208658D61C8CB6D30088A06D /* DayPreviewView.swift in Sources */,
 				5BBB5C491C8BA3BF0084D4D8 /* Event.swift in Sources */,

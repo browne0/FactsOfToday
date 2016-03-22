@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol WebViewDelegate {
+    func openURL(url: NSURL)
+}
+
 class DetailViewController: UIViewController {
     var events: [Event]?
     @IBOutlet weak var tableView: UITableView!
@@ -37,9 +41,17 @@ class DetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ToWebView" {
+            let url = sender as! NSURL
+            let vc = segue.destinationViewController as! WebViewController
+            vc.url = url
+        }
+    }
 }
 
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let events = events {
             return events.count
@@ -52,7 +64,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventDetailCell") as! EventDetailCell
         
         cell.event = events?[indexPath.row]
+        cell.delegate = self
         
         return cell
+    }
+    
+    func openURL(url: NSURL) {
+        self.performSegueWithIdentifier("ToWebView", sender: url)
     }
 }

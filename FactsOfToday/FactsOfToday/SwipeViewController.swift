@@ -171,7 +171,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         
         if firstLoad {
         self.items = NSMutableArray() as [AnyObject]
-        for var i = 0; i < 100; i++ {
+        for i in 0 ..< 100 {
             items.append(Int(i))
         }
         
