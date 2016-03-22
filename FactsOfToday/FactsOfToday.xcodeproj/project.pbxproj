@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2001358E1C8BB1C200C0A36F /* DayPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2001358D1C8BB1C200C0A36F /* DayPreviewView.xib */; };
+		2047F6E71C9DCEC500403598 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047F6E61C9DCEC500403598 /* SettingsViewController.swift */; };
+		2049E2FB1CA0C6B3004F2A19 /* StaticTableViewController in Resources */ = {isa = PBXBuildFile; fileRef = 2049E2FA1CA0C6B3004F2A19 /* StaticTableViewController */; };
+		2049E2FE1CA0D7D7004F2A19 /* StaticDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2049E2FD1CA0D7D7004F2A19 /* StaticDataTableViewController.m */; };
 		207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A9D1F1C8F84730040C4FA /* HistoryClient.swift */; };
 		208658D61C8CB6D30088A06D /* DayPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208658D51C8CB6D30088A06D /* DayPreviewView.swift */; };
 		48B7D524699ABA962E83BCA6 /* Pods_FactsOfToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457D97927ABB94A106940C00 /* Pods_FactsOfToday.framework */; };
@@ -26,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		2001358D1C8BB1C200C0A36F /* DayPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayPreviewView.xib; sourceTree = "<group>"; };
+		2047F6E61C9DCEC500403598 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2049E2FA1CA0C6B3004F2A19 /* StaticTableViewController */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StaticTableViewController; sourceTree = "<group>"; };
+		2049E2FD1CA0D7D7004F2A19 /* StaticDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StaticDataTableViewController.m; path = FactsOfToday/StaticTableViewController/StaticDataTableViewController.m; sourceTree = "<group>"; };
 		207A9D1F1C8F84730040C4FA /* HistoryClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryClient.swift; sourceTree = "<group>"; };
 		208658D51C8CB6D30088A06D /* DayPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPreviewView.swift; sourceTree = "<group>"; };
 		2F59758232D316F0126C5E96 /* Pods-FactsOfToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsOfToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			children = (
 				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
+				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -121,6 +128,7 @@
 		84B946571C864C7400D78BDE = {
 			isa = PBXGroup;
 			children = (
+				2049E2FD1CA0D7D7004F2A19 /* StaticDataTableViewController.m */,
 				84B9467F1C8BB3F900D78BDE /* SwipeView.m */,
 				84B946621C864C7400D78BDE /* FactsOfToday */,
 				84B946611C864C7400D78BDE /* Products */,
@@ -150,6 +158,7 @@
 				84B9466A1C864C7500D78BDE /* Assets.xcassets */,
 				84B9466C1C864C7500D78BDE /* LaunchScreen.storyboard */,
 				84B9466F1C864C7500D78BDE /* Info.plist */,
+				2049E2FA1CA0C6B3004F2A19 /* StaticTableViewController */,
 				84B946751C8BA19B00D78BDE /* SwipeView */,
 			);
 			path = FactsOfToday;
@@ -220,6 +229,7 @@
 				84B9466E1C864C7500D78BDE /* LaunchScreen.storyboard in Resources */,
 				84B9466B1C864C7500D78BDE /* Assets.xcassets in Resources */,
 				84B946691C864C7500D78BDE /* Main.storyboard in Resources */,
+				2049E2FB1CA0C6B3004F2A19 /* StaticTableViewController in Resources */,
 				2001358E1C8BB1C200C0A36F /* DayPreviewView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +292,9 @@
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */,
 				84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */,
+				2047F6E71C9DCEC500403598 /* SettingsViewController.swift in Sources */,
 				84B946801C8BB3F900D78BDE /* SwipeView.m in Sources */,
+				2049E2FE1CA0D7D7004F2A19 /* StaticDataTableViewController.m in Sources */,
 				208658D61C8CB6D30088A06D /* DayPreviewView.swift in Sources */,
 				5BBB5C491C8BA3BF0084D4D8 /* Event.swift in Sources */,
 				5BCC74E31C8F6F7E00F49EA7 /* DetailViewController.swift in Sources */,

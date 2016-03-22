@@ -7,3 +7,4 @@
 //
 
 #import "FactsOfToday/SwipeView/SwipeView.h"
+#import "FactsOfToday/StaticTableViewController/StaticDataTableViewController.h"
