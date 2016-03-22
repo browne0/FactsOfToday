@@ -11,7 +11,7 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 - [x] As a user I would like to tap the preview to go to a table view that lists more items in that category for that day.
 - [ ] As a user I would like to tap the links available in each cell to open a modal Safari view of the related Wikipedia page.
 - [x] As a user I would like to swipe left and right on the main page to switch to adjacent dates.
-- [ ] As a user I would like to open a calendar view to pick from further dates more quickly.
+- [x] As a user I would like to open a calendar view to pick from further dates more quickly.
 - [ ] As a user I would like to tap the ‘today’ button to get back to the current day.
 
 #Optional User Stories:
