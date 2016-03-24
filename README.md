@@ -24,8 +24,7 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 
 - [ ] As a user I would like to select color schemes
 - [ ] As a user I would like to use the 6s force touch to push and pop article links.
-- [x] As a user I would like to see images from Wikipedia API on the tableview before opening the links.
-  - @darrell1994
+- [ ] As a user I would like to see images from Wikipedia API on the tableview before opening the links.
 - [x] As a user I would like to be able to choose to receive a daily event notification.
   - @tragessere
   - Currently using local notifications, might have to switch to push notifications to work better.
