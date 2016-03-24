@@ -16,7 +16,10 @@ class Link {
     init(subject: String?, title: String?, url: String?) {
         self.subject = subject
         self.title = title
-        if let url = url {
+        if var url = url {
+            if let range = url.rangeOfString("wikipedia.com") {
+                url.replaceRange(range, with: "en.m.wikipedia.org")
+            }
             self.url = NSURL(string: url)
         }
     }
