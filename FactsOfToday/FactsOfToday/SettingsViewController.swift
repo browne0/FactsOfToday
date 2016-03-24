@@ -11,8 +11,11 @@ import UIKit
 class SettingsViewController: StaticDataTableViewController {
 	
 	static let notificationKey = "useNotifications"
-	static let notificationHour = "notificationHour"
-	static let notificationMinute = "notificationMinute"
+	//format 'H:m'
+	static let notificationTime = "notificationTime"
+	static let notificationDescription = "notificationDescription"
+	//format 'M/d'
+	static let notificationLastUpdate = "notificationUpdateTime"
 	var timePickerHidden = true
 	
 	@IBOutlet var settingsTableView: UITableView!
@@ -41,7 +44,7 @@ class SettingsViewController: StaticDataTableViewController {
 		
 		notificationTimePicker.addTarget(self, action: "dateChanged:", forControlEvents: UIControlEvents.ValueChanged)
 		
-		if defaults.objectForKey(SettingsViewController.notificationHour) == nil {
+		if defaults.objectForKey(SettingsViewController.notificationTime) == nil {
 			let currentTime = NSDate()
 			
 			let formatter = NSDateFormatter()
@@ -60,22 +63,16 @@ class SettingsViewController: StaticDataTableViewController {
 			
 			notificationTimeLabel.text = formatter.stringFromDate(roundedTime!)
 		} else {
-			let hour = defaults.integerForKey(SettingsViewController.notificationHour)
-			let minute = defaults.integerForKey(SettingsViewController.notificationMinute)
-			
-			let currentTime = NSDate()
-			let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-			let components = gregorian?.components([.Hour, .Minute], fromDate: currentTime)
-			components?.setValue(hour, forComponent: NSCalendarUnit.Hour)
-			components?.setValue(minute, forComponent: NSCalendarUnit.Minute)
-			let savedTime = gregorian?.dateFromComponents(components!)
-			
-			notificationTimePicker.date = savedTime!
+			let savedTimeString = defaults.stringForKey(SettingsViewController.notificationTime)!
 			
 			let formatter = NSDateFormatter()
+			formatter.dateFormat = "H:m"
+			let savedTime = formatter.dateFromString(savedTimeString)
+			
 			formatter.dateStyle = NSDateFormatterStyle.NoStyle
 			formatter.timeStyle = NSDateFormatterStyle.ShortStyle
 			
+			notificationTimePicker.date = savedTime!
 			notificationTimeLabel.text = formatter.stringFromDate(savedTime!)
 		}
     }
@@ -110,16 +107,20 @@ class SettingsViewController: StaticDataTableViewController {
 		
 		if notificationSwitch.on {
 			let formatter = NSDateFormatter()
-			formatter.dateFormat = "H"
-			defaults.setInteger(
-				Int(formatter.stringFromDate(notificationTimePicker.date))!,
-				forKey: SettingsViewController.notificationHour)
+			formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+			formatter.dateFormat = "H:m"
+			defaults.setObject(formatter.stringFromDate(notificationTimePicker.date), forKey: SettingsViewController.notificationTime)
 			
-			formatter.dateFormat = "m"
-			defaults.setInteger(
-				Int(formatter.stringFromDate(notificationTimePicker.date))!,
-				forKey: SettingsViewController.notificationMinute)
+			let interval = NSTimeInterval(60*60*23)
+			UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(interval)
+//			UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+			
+			HistoryClient.cacheEvent(nil)
+			defaults.synchronize()
 		} else {
+			//Disable background refresh if the user has notifications disabled
+			UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
+			
 //			defaults.removeObjectForKey(SettingsViewController.notificationHour)
 //			defaults.removeObjectForKey(SettingsViewController.notificationMinute)
 		}
