@@ -84,7 +84,6 @@ class SettingsViewController: StaticDataTableViewController {
 	
 	func dateChanged(datePicker: UIDatePicker) {
 		let formatter = NSDateFormatter()
-//		formatter.dateFormat = "H"
 		formatter.dateStyle = NSDateFormatterStyle.NoStyle
 		formatter.timeStyle = NSDateFormatterStyle.ShortStyle
 		notificationTimeLabel.text = formatter.stringFromDate(datePicker.date)
