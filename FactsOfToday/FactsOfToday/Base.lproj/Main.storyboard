@@ -39,7 +39,9 @@
                                 <gestureRecognizers/>
                                 <state key="normal" title="Calendar"/>
                                 <connections>
-                                    <action selector="onTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IKI-Uk-edY"/>
+                                    <segue destination="ldF-fb-IfQ" kind="popoverPresentation" popoverAnchorView="ldd-Gk-BHQ" id="pzo-NP-2PB">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -64,6 +66,7 @@
             </objects>
             <point key="canvasLocation" x="874" y="125"/>
         </scene>
+<<<<<<< Updated upstream
         <!--Settings-->
         <scene sceneID="4n8-A1-2SE">
             <objects>
@@ -197,6 +200,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5D-vs-AMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1810" y="-264"/>
+=======
+        <!--Calendar View Controller-->
+        <scene sceneID="MNX-Le-HIB">
+            <objects>
+                <viewController id="ldF-fb-IfQ" customClass="CalendarViewController" customModule="FactsOfToday" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rMh-i9-URC"/>
+                        <viewControllerLayoutGuide type="bottom" id="EuE-0S-Rvk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dxQ-XB-HDo">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-Wc-IhP" customClass="CVCalendarMenuView" customModule="CVCalendar">
+                                <rect key="frame" x="10" y="20" width="280" height="24"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-Ot-kYh" customClass="CVCalendarView" customModule="CVCalendar">
+                                <rect key="frame" x="10" y="52" width="280" height="300"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="450"/>
+                    <connections>
+                        <outlet property="calendarView" destination="fmD-Ot-kYh" id="HU6-Um-3N5"/>
+                        <outlet property="menuView" destination="C7e-Wc-IhP" id="0gl-Pd-JCg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KSv-bj-x15" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="767"/>
+>>>>>>> Stashed changes
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ULq-gg-oN2">
@@ -221,8 +257,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-h8-drO" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="16" y="16" width="37" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-h8-drO" customClass="TTTAttributedLabel">
+                                                    <rect key="frame" x="16" y="16" width="37" height="33"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

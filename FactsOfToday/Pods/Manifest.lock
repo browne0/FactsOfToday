@@ -14,17 +14,17 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - Calendar-iOS (0.9)
+  - CVCalendar (1.2.9)
   - TTTAttributedLabel (1.13.4)
 
 DEPENDENCIES:
   - AFNetworking
-  - Calendar-iOS
+  - CVCalendar (~> 1.2)
   - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  Calendar-iOS: 2296d7b4354a36ee1eefa012617b573270a206cb
+  CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
 
 COCOAPODS: 0.39.0

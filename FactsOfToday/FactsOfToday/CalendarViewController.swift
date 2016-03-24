@@ -2,23 +2,41 @@
 //  CalendarViewController.swift
 //  FactsOfToday
 //
-//  Created by Malik Browne on 3/8/16.
+//  Created by Malik Browne on 3/22/16.
 //  Copyright © 2016 FactsOfToday. All rights reserved.
 //
 
 import UIKit
+import CVCalendar
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController,  UIPopoverPresentationControllerDelegate  {
 
+    @IBOutlet weak var menuView: CVCalendarMenuView!
+    
+    @IBOutlet weak var calendarView: CVCalendarView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Calendar delegate
+                self.calendarView.calendarDelegate = self
+        
+                // Menu delegate
+                self.menuView.menuViewDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        calendarView.commitCalendarViewUpdate()
+        menuView.commitMenuViewUpdate()
     }
     
 
@@ -32,4 +50,14 @@ class CalendarViewController: UIViewController {
     }
     */
 
+}
+
+extension CalendarViewController: CVCalendarMenuViewDelegate, CVCalendarViewDelegate {
+    func presentationMode() -> CalendarMode {
+        return .MonthView
+    }
+    
+    func firstWeekday() -> Weekday {
+        return .Sunday
+    }
 }

@@ -85,11 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FactsOfToday/AFNetworking.framework"
-  install_framework "Pods-FactsOfToday/Calendar_iOS.framework"
+  install_framework "Pods-FactsOfToday/CVCalendar.framework"
   install_framework "Pods-FactsOfToday/TTTAttributedLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FactsOfToday/AFNetworking.framework"
-  install_framework "Pods-FactsOfToday/Calendar_iOS.framework"
+  install_framework "Pods-FactsOfToday/CVCalendar.framework"
   install_framework "Pods-FactsOfToday/TTTAttributedLabel.framework"
 fi

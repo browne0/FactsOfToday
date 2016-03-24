@@ -26,6 +26,7 @@
 		84B946761C8BA19B00D78BDE /* SwipeView in Resources */ = {isa = PBXBuildFile; fileRef = 84B946751C8BA19B00D78BDE /* SwipeView */; };
 		84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B946771C8BA2F200D78BDE /* SwipeViewController.swift */; };
 		84B946801C8BB3F900D78BDE /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9467F1C8BB3F900D78BDE /* SwipeView.m */; };
+		84DFC0D01CA1EF2A0074C286 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFC0CF1CA1EF2A0074C286 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		84B946751C8BA19B00D78BDE /* SwipeView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwipeView; sourceTree = "<group>"; };
 		84B946771C8BA2F200D78BDE /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		84B9467F1C8BB3F900D78BDE /* SwipeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = FactsOfToday/SwipeView/SwipeView.m; sourceTree = "<group>"; };
+		84DFC0CF1CA1EF2A0074C286 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
 				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
 				5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */,
+				84DFC0CF1CA1EF2A0074C286 /* CalendarViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DFC0D01CA1EF2A0074C286 /* CalendarViewController.swift in Sources */,
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */,
 				84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */,
