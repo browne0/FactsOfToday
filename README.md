@@ -7,22 +7,32 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 #Required User Stories:
 
 - [x] As a user I would like the app to open and search for today’s date by default.
+  - @tragessere
 - [x] As a user I would like to see preview of the three categories on the main screen: events, births, deaths.
+  - @tragessere
 - [x] As a user I would like to tap the preview to go to a table view that lists more items in that category for that day.
+  - @darrell1994
 - [x] As a user I would like to tap the links available in each cell to open a web view of the related Wikipedia page.
+  - @darrell1994
 - [x] As a user I would like to swipe left and right on the main page to switch to adjacent dates.
+  - @browne0, @tragessere
 - [x] As a user I would like to open a calendar view to pick from further dates more quickly.
+  - @browne0
 - [ ] As a user I would like to tap the ‘today’ button to get back to the current day.
 
 #Optional User Stories:
 
 - [ ] As a user I would like to select color schemes
 - [ ] As a user I would like to use the 6s force touch to push and pop article links.
-- [ ] As a user I would like to see images from Wikipedia API on the tableview before opening the links.
-- [ ] As a user I would like to be able to choose to receive a daily event notification.
+- [x] As a user I would like to see images from Wikipedia API on the tableview before opening the links.
+  - @darrell1994
+- [x] As a user I would like to be able to choose to receive a daily event notification.
+  - @tragessere
+  - Currently using local notifications, might have to switch to push notifications to work better.
 - [ ] As a user I would like my date selection to persist until the next day.
 - [ ] As a user I would like to see the location an event took place on a map (for Wikipedia articles with the coordinates available)
-- [ ] As a user I would like to share information and links via Twitter.
+- [x] As a user I would like to share information and links via Twitter.
+  - @darrell1994
 
 # Wireframe
 
