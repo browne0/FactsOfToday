@@ -18,12 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-xU-VnT" customClass="SwipeView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-xU-VnT" customClass="SwipeView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cLX-xU-VnT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Dgv-ec-ajF"/>
+                            <constraint firstAttribute="trailing" secondItem="cLX-xU-VnT" secondAttribute="trailing" id="gyG-bb-Fvi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cLX-xU-VnT" secondAttribute="bottom" id="wLd-Kg-zmz"/>
+                            <constraint firstItem="cLX-xU-VnT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wkD-eK-tLT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Date" id="xoW-qT-qeP">
                         <barButtonItem key="leftBarButtonItem" id="gKb-oc-qc6">
@@ -212,11 +218,11 @@
                                         <rect key="frame" x="0.0" y="28" width="328" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bYy-HS-v3i" id="Z8M-Yj-dee">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="57.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-h8-drO" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="16" y="16" width="37" height="33"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-h8-drO" customClass="TTTAttributedLabel">
+                                                    <rect key="frame" x="16" y="16" width="37" height="34"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -254,6 +260,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09H-vd-9sy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1340" y="469"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="7bs-4j-jy5">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fah-3V-T8R" customClass="WebViewController" customModule="FactsOfToday" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TiI-4M-z2e"/>
+                        <viewControllerLayoutGuide type="bottom" id="T9e-hT-DlZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uJs-qg-9ZZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3q-UN-CtM">
+                                <rect key="frame" x="-4" y="64" width="328" height="504"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W3q-UN-CtM" firstAttribute="top" secondItem="TiI-4M-z2e" secondAttribute="bottom" id="HRQ-8T-gu5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W3q-UN-CtM" secondAttribute="trailing" constant="-20" id="P4q-rg-neu"/>
+                            <constraint firstItem="W3q-UN-CtM" firstAttribute="leading" secondItem="uJs-qg-9ZZ" secondAttribute="leadingMargin" constant="-20" id="pl0-sp-rGk"/>
+                            <constraint firstItem="T9e-hT-DlZ" firstAttribute="top" secondItem="W3q-UN-CtM" secondAttribute="bottom" id="ql1-Vc-GIJ"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="webView" destination="W3q-UN-CtM" id="fDn-kb-HQQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PlU-Kc-mfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="469"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="92d-84-yTE">
+            <objects>
+                <viewController id="fog-sN-bnW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zoX-kl-cgR"/>
+                        <viewControllerLayoutGuide type="bottom" id="2hq-wF-YzH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fnd-3M-uSM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ivj-dL-ePL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="-264"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MOQ-Ow-p6Z">
