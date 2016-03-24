@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 protocol WebViewDelegate {
     func openURL(url: NSURL)
@@ -23,19 +24,6 @@ class DetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
-        
-//        HistoryClient.getEventsByDate("6", day: "1") { (events, births, deaths) -> () in
-//            if let events = events {
-//                self.events = events
-//                self.tableView.reloadData()
-//            } else if let events = births {
-//                self.events = events
-//                self.tableView.reloadData()
-//            } else if let events = deaths {
-//                self.events = events
-//                self.tableView.reloadData()
-//            }
-//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +55,20 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
         cell.delegate = self
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            let twitterShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterShare.setInitialText("#factsOfToday " + events![indexPath.row].text!)
+            self.presentViewController(twitterShare, animated: true, completion: nil)
+            
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account in the Settings to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func openURL(url: NSURL) {
