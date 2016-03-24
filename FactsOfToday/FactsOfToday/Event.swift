@@ -27,7 +27,8 @@ class Event {
     }
     
     private func getTimeWithString(dateString: String)->NSDate! {
-        let formatter = NSDateFormatter()
+		let formatter = NSDateFormatter()
+		formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         formatter.dateFormat = "MMMM d y"
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         var date = formatter.dateFromString(dateString)

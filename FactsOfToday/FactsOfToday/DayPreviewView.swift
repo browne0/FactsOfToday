@@ -171,7 +171,7 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: false)
-		switch indexPath.row {
+		switch indexPath.section {
 		case 0:
 			delegate?.didSelectRow(events)
 		case 1:
