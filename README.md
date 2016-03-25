@@ -109,6 +109,6 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Video Walkthrough - Sprint 2
 
-![sprint 2 demo](factsoftoday-demo-66%.gif)
+![sprint 2 demo](factsoftoday-demo-66%25.gif)
 
 GIF created with [LiceCape](http://www.cockos.com/licecap/).
