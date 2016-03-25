@@ -19,6 +19,9 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 	var previousPosition = 0
     var selectedDay: DayView!
 	
+    var calendarView: CVCalendarView!
+    var menuView: CVCalendarMenuView!
+    
 	//TODO: is there a better way to do this?
 	//The method for the current view being changed isn't called for the first view loaded
 	var firstDate = true
@@ -27,76 +30,33 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         return .None
     }
     
-//    @IBAction func onTap(sender: AnyObject) {
-//        let popoverMenuViewController = calendarViewController.popoverPresentationController
-//        popoverMenuViewController?.permittedArrowDirections = .Any
-//        popoverMenuViewController?.delegate = self
-//        popoverMenuViewController?.sourceView = sender as? UIView
-//        popoverMenuViewController?.sourceRect = CGRect(x: sender.center.x - CGFloat(15), y: sender.center.y, width: CGFloat(1), height: CGFloat(1))
-//        presentViewController(calendarViewController, animated: true, completion: nil)
-//        
-//    }
-//    func createCalendarView() {
-//        
-//        // Appearance delegate [Unnecessary]
-//        self.calendarView.calendarAppearanceDelegate = self
-//        
-//        // Animator delegate [Unnecessary]
-//        self.calendarView.animatorDelegate = self
-//        
-//        // Calendar delegate
-//        self.calendarView.calendarDelegate = self
-//        
-//        // Menu delegate
-//        self.menuView.menuViewDelegate = self
-//        
-//        calendarViewController.modalPresentationStyle = .Popover
+    @IBAction func onCalendarPress(sender: AnyObject) {
+        let popoverMenuViewController = calendarViewController.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = .Any
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = sender as? UIView
+        popoverMenuViewController?.sourceRect = CGRect(x: sender.center.x - CGFloat(15), y: sender.center.y, width: CGFloat(1), height: CGFloat(1))
+        presentViewController(calendarViewController, animated: false, completion: nil)
+    }
+    
+    func createCalendarView() {
+        
+        // CVCalendarView initialization with frame
+        self.calendarView = CVCalendarView(frame: CGRectMake(0, 20, 300, 450))
+        
+        // CVCalendarMenuView initialization with frame
+        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 90, 300, 15))
+        
+        // Calendar delegate
+        self.calendarView.calendarDelegate = self
+        
+        // Menu delegate
+        self.menuView.menuViewDelegate = self
+        
+        calendarViewController.modalPresentationStyle = .Popover
 //        calendarViewController.preferredContentSize = CGSizeMake(350, calendarView.bounds.height)
-//        calendarViewController.view = calendarView
-////        calendarViewController.view.bounds = CGRectInset(view.frame, -CGFloat(12.5), -CGFloat(15))
-//        
-////        let calendarView: CalendarView = CalendarView()
-////        calendarView.shouldShowHeaders = true
-////        calendarView.calendarDelegate = self;
-////        
-////        calendarViewController.modalPresentationStyle = .Popover
-////        calendarViewController.preferredContentSize = CGSizeMake(350, calendarView.bounds.height+12.5)
-////        calendarViewController.view = calendarView
-////        calendarViewController.view.bounds = CGRectInset(view.frame, -CGFloat(12.5), -CGFloat(15));
-//        
-//    }
-    
-//    func didChangeCalendarDate(date: NSDate!) {
-//
-//    }
-//    
-//    func didChangeCalendarDate(date: NSDate!, withType type: Int, withEvent event: Int) {
-//                currentDate = date;
-//                print(currentDate)
-//                let components: NSDateComponents = NSCalendar.currentCalendar().components([.Day, .Month, .Year], fromDate: currentDate!)
-//                let year = components.year
-//                print(year)
-//    }
-    
-//    func didDoubleTapCalendar(date: NSDate!, withType type: Int) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//
-//                let printFormatter = NSDateFormatter()
-//                printFormatter.dateFormat = "MMM, d"
-//                title = printFormatter.stringFromDate(currentDate!)
-//        
-//                let formatter = NSDateFormatter()
-//                formatter.dateFormat = "M"
-//                let month = formatter.stringFromDate(currentDate!)
-//                formatter.dateFormat = "d"
-//                let day = formatter.stringFromDate(currentDate!)
-//        
-//                let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
-//                view = nibViewArray.objectAtIndex(0) as! DayPreviewView
-//                
-//                
-//                (self.view as! DayPreviewView).reloadDataOnCalendar(month, day: day, view: swipeView)
-//    }
+        calendarViewController.view = calendarView
+    }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
 		
@@ -112,7 +72,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 			
 			let printFormatter = NSDateFormatter()
 			printFormatter.dateFormat = "MMM, d"
-//			title = printFormatter.stringFromDate(currentDate!)
+			title = printFormatter.stringFromDate(currentDate!)
             
 			
 			let formatter = NSDateFormatter()
@@ -202,15 +162,15 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         swipeView.pagingEnabled = true
         swipeView.wrapEnabled = true
         
-//        createCalendarView()
+        createCalendarView()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        
-//        self.calendarView.commitCalendarViewUpdate()
-//        self.menuView.commitMenuViewUpdate()
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.calendarView.commitCalendarViewUpdate()
+        self.menuView.commitMenuViewUpdate()
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToDetailView" {
@@ -218,5 +178,49 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
             let vc = segue.destinationViewController as! DetailViewController
             vc.events = events
         }
+    }
+}
+
+extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+    
+    /// Required method to implement!
+    func presentationMode() -> CalendarMode {
+        return .MonthView
+    }
+    
+    /// Required method to implement!
+    func firstWeekday() -> Weekday {
+        return .Sunday
+    }
+    
+    func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
+        print("\(dayView.date.commonDescription) is selected!")
+        selectedDay = dayView
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
+        view = nibViewArray.objectAtIndex(0) as! DayPreviewView
+        
+        let printFormatter = NSDateFormatter()
+        printFormatter.dateFormat = "MMM, d"
+        
+        let cvdatestring = dayView.date.commonDescription
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "d MMM, yyyy"
+        
+        let cvdate = dateFormatter.dateFromString(cvdatestring)
+        
+        title = printFormatter.stringFromDate((cvdate)!)
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "M"
+        let month = formatter.stringFromDate(cvdate!)
+        formatter.dateFormat = "d"
+        let day = formatter.stringFromDate(cvdate!)
+        (view as! DayPreviewView).reloadData(month, day: day)
+        
+        self.swipeView.reloadData()
     }
 }

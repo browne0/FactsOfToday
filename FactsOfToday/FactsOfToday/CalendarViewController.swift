@@ -21,10 +21,10 @@ class CalendarViewController: UIViewController,  UIPopoverPresentationController
         // Do any additional setup after loading the view.
         
         // Calendar delegate
-                self.calendarView.calendarDelegate = self
+                calendarView.calendarDelegate = self
         
                 // Menu delegate
-                self.menuView.menuViewDelegate = self
+                menuView.menuViewDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
