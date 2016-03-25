@@ -219,8 +219,5 @@ extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         let month = formatter.stringFromDate(cvdate!)
         formatter.dateFormat = "d"
         let day = formatter.stringFromDate(cvdate!)
-        (view as! DayPreviewView).reloadData(month, day: day)
-        
-        self.swipeView.reloadData()
     }
 }
