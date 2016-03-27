@@ -76,6 +76,16 @@ class SettingsViewController: StaticDataTableViewController {
 			notificationTimeLabel.text = formatter.stringFromDate(savedTime!)
 		}
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        let colorScheme = ColorScheme.getInstance()
+        if colorScheme.customized {
+            let nb = self.navigationController?.navigationBar
+            nb?.barTintColor = colorScheme.barTintColor
+            nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.tintColor!]
+            nb?.tintColor = colorScheme.tintColor
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,17 +98,18 @@ class SettingsViewController: StaticDataTableViewController {
 		formatter.timeStyle = NSDateFormatterStyle.ShortStyle
 		notificationTimeLabel.text = formatter.stringFromDate(datePicker.date)
 	}
-    
-
-    /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ToChangeColorScheme" {
+            let vc = segue.destinationViewController as! ColorSchemeViewController
+            let swipeViewController = (self.storyboard?.instantiateInitialViewController() as? UINavigationController)?.viewControllers.first as? ColorSchemeDelegate
+            if swipeViewController == nil {
+                print("swipeViewController is nil")
+            }
+            vc.delegate = swipeViewController
+        }
     }
-    */
 	
 	override func viewWillDisappear(animated: Bool) {
 		let defaults = NSUserDefaults.standardUserDefaults()

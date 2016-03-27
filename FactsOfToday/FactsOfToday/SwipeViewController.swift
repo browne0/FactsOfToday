@@ -9,7 +9,11 @@
 import UIKit
 import CVCalendar
 
-class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate, UIPopoverPresentationControllerDelegate  {
+protocol ColorSchemeDelegate {
+    func didChangeColorScheme(barTintColor: UIColor, tintColor: UIColor)
+}
+
+class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate, UIPopoverPresentationControllerDelegate, ColorSchemeDelegate  {
 
     @IBOutlet weak var swipeView: SwipeView!
     var items: [AnyObject] = [AnyObject]()
@@ -22,9 +26,22 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     var calendarView: CVCalendarView!
     var menuView: CVCalendarMenuView!
     
+    var barTintColor: UIColor?
+    var tintColor: UIColor?
+        
 	//TODO: is there a better way to do this?
 	//The method for the current view being changed isn't called for the first view loaded
 	var firstDate = true
+    
+    override func viewWillAppear(animated: Bool) {
+        let colorScheme = ColorScheme.getInstance()
+        if colorScheme.customized {
+            let nb = self.navigationController?.navigationBar
+            nb?.barTintColor = colorScheme.barTintColor
+            nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.tintColor!]
+            nb?.tintColor = colorScheme.tintColor
+        }
+    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
@@ -178,6 +195,11 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
             let vc = segue.destinationViewController as! DetailViewController
             vc.events = events
         }
+    }
+    
+    func didChangeColorScheme(barTintColor: UIColor, tintColor: UIColor) {
+        self.barTintColor = barTintColor
+        self.tintColor = tintColor
     }
 }
 
