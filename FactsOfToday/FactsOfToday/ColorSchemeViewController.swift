@@ -8,9 +8,11 @@
 
 import UIKit
 
+let ColorSchemeKey = "ColorSchemeKey"
+
 class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
-    var colors: [UIColor]!
+    var colors: [Int]!
     var delegate: ColorSchemeDelegate?
 
     override func viewDidLoad() {
@@ -19,12 +21,13 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        colors = [UIColor]()
-        colors.append(UIColor(red: 133/255, green: 174/255, blue: 38/255, alpha: 1))
-        colors.append(UIColor(red: 251/255, green: 81/255, blue: 68/255, alpha: 1))
-        colors.append(UIColor(netHex: 0x338acc))
-        colors.append(UIColor(netHex: 0x936798))
-        colors.append(UIColor(netHex: 0xe89726))
+        colors = [Int]()
+        colors.append(0xFFFFFF)
+        colors.append(0x85AE26)
+        colors.append(0xFB5144)
+        colors.append(0x338acc)
+        colors.append(0x936798)
+        colors.append(0xe89726)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,12 +37,18 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let colorScheme = ColorScheme.getInstance()
-        colorScheme.setColorScheme(colors[indexPath.row], tintColor: UIColor.whiteColor())
         let nb = self.navigationController?.navigationBar
+        if indexPath.row == 0 {
+            colorScheme.setToDefault()
+        } else {
+            colorScheme.setColorScheme(UIColor(netHex: colors[indexPath.row]), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), statusBarStyle: UIStatusBarStyle.LightContent)
+        }
+        colorScheme.alreadySet = false
         nb?.barTintColor = colorScheme.barTintColor
-        nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.tintColor!]
+        nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
         nb?.tintColor = colorScheme.tintColor
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+        UIApplication.sharedApplication().setStatusBarStyle(colorScheme.statusBarStyle, animated: false)
+        NSUserDefaults.standardUserDefaults().setInteger(colors[indexPath.row], forKey: ColorSchemeKey)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,7 +57,7 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ColorCell", forIndexPath: indexPath)
-        cell.backgroundColor = colors[indexPath.row]
+        cell.backgroundColor = UIColor(netHex: colors[indexPath.row])
         return cell
     }
 }

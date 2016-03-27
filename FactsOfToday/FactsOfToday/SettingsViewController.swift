@@ -28,6 +28,8 @@ class SettingsViewController: StaticDataTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+        setColorScheme()
+        
 		insertTableViewRowAnimation = UITableViewRowAnimation.Middle
 		deleteTableViewRowAnimation = UITableViewRowAnimation.Middle
 		reloadTableViewRowAnimation = UITableViewRowAnimation.Middle
@@ -77,14 +79,12 @@ class SettingsViewController: StaticDataTableViewController {
 		}
     }
     
-    override func viewWillAppear(animated: Bool) {
+    func setColorScheme() {
         let colorScheme = ColorScheme.getInstance()
-        if colorScheme.customized {
-            let nb = self.navigationController?.navigationBar
-            nb?.barTintColor = colorScheme.barTintColor
-            nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.tintColor!]
-            nb?.tintColor = colorScheme.tintColor
-        }
+        let nb = self.navigationController?.navigationBar
+        nb?.barTintColor = colorScheme.barTintColor
+        nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
+        nb?.tintColor = colorScheme.tintColor
     }
 
     override func didReceiveMemoryWarning() {

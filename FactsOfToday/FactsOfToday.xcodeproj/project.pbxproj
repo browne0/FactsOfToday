@@ -102,11 +102,11 @@
 		5BCC74E61C8F754700F49EA7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
-				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
+				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */,
 				84DFC0CF1CA1EF2A0074C286 /* CalendarViewController.swift */,
+				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
 				5B05E4751CA8703000D5C6AE /* ColorSchemeViewController.swift */,
 			);
 			name = ViewControllers;

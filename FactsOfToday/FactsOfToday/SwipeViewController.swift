@@ -33,16 +33,6 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 	//The method for the current view being changed isn't called for the first view loaded
 	var firstDate = true
     
-    override func viewWillAppear(animated: Bool) {
-        let colorScheme = ColorScheme.getInstance()
-        if colorScheme.customized {
-            let nb = self.navigationController?.navigationBar
-            nb?.barTintColor = colorScheme.barTintColor
-            nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.tintColor!]
-            nb?.tintColor = colorScheme.tintColor
-        }
-    }
-    
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
@@ -160,10 +150,35 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         self.performSegueWithIdentifier("ToDetailView", sender: eventList)
 	}
     
+    func setColorScheme() {
+        let colorHex = NSUserDefaults.standardUserDefaults().integerForKey(ColorSchemeKey)
+        if colorHex == 0xFFFFFF {
+            ColorScheme.getInstance().setToDefault()
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
+        } else {
+            ColorScheme.getInstance().setColorScheme(UIColor(netHex: colorHex), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), statusBarStyle: UIStatusBarStyle.LightContent)
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+        }
+        ColorScheme.getInstance().alreadySet = false
+        
+        viewWillAppear(false)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let colorScheme = ColorScheme.getInstance()
+        if !colorScheme.alreadySet {
+            let nb = self.navigationController?.navigationBar
+            nb?.barTintColor = colorScheme.barTintColor
+            nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
+            nb?.tintColor = colorScheme.tintColor
+            colorScheme.alreadySet = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setColorScheme()
         
         self.items = NSMutableArray() as [AnyObject]
         for i in 0 ..< 100 {
