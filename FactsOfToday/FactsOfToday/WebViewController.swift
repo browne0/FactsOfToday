@@ -41,24 +41,16 @@ class WebViewController: UIViewController, UIWebViewDelegate {
 	
 	func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 		let url = request.URL
-		if url != nil {
-			if let match = url?.absoluteString.rangeOfString("^https:\\/\\/[a-zA-Z]{2}\\.(m\\.)?wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
-				let urlPath = url?.absoluteString.substringFromIndex(match.endIndex)
-				if let articleTitleUrl = (urlPath?.componentsSeparatedByString("#"))?[0] {
-					WikipediaClient.getCoordinatesForArticleWithTitle(articleTitleUrl, completion: { (coordinates) in
-						if let coordinates = coordinates {
-							self.mapButton.enabled = true
-							self.coordinates = coordinates
-						} else {
-							self.mapButton.enabled = false
-						}
-					})
-				} else {	//Is there a way to have fewer 'else' statements here?
+		
+		if let articleTitle = WikipediaClient.getArticleTitleUrl(url) {
+			WikipediaClient.getCoordinatesForArticleWithTitle(articleTitle, completion: { (coordinates) in
+				if let coordinates = coordinates {
+					self.mapButton.enabled = true
+					self.coordinates = coordinates
+				} else {
 					self.mapButton.enabled = false
 				}
-			} else {
-				self.mapButton.enabled = false
-			}
+			})
 		} else {
 			self.mapButton.enabled = false
 		}
