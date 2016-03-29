@@ -90,9 +90,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="6Cn-fR-BrB" kind="push" identifier="ToChangeColorScheme" id="ccX-iU-e5Q"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
