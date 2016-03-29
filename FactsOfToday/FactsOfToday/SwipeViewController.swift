@@ -49,10 +49,10 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     func createCalendarView() {
         
         // CVCalendarView initialization with frame
-        self.calendarView = CVCalendarView(frame: CGRectMake(0, 20, 300, 450))
+        self.calendarView = CVCalendarView(frame: CGRectMake(0, 50, 300, 350))
         
         // CVCalendarMenuView initialization with frame
-        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 90, 300, 15))
+        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 20, 300, 15))
         
         // Calendar delegate
         self.calendarView.calendarDelegate = self
@@ -61,8 +61,10 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         self.menuView.menuViewDelegate = self
         
         calendarViewController.modalPresentationStyle = .Popover
-//        calendarViewController.preferredContentSize = CGSizeMake(350, calendarView.bounds.height)
-        calendarViewController.view = calendarView
+        calendarViewController.preferredContentSize = CGSizeMake(350, calendarView.bounds.height)
+        let calendarViewFinal = calendarViewController.view
+        calendarViewFinal.addSubview(calendarView)
+        calendarViewFinal.addSubview(menuView)
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
@@ -228,6 +230,14 @@ extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     /// Required method to implement!
     func firstWeekday() -> Weekday {
         return .Sunday
+    }
+    
+    func shouldShowWeekdaysOut() -> Bool {
+        return true
+    }
+    
+    func shouldAutoSelectDayOnMonthChange() -> Bool {
+        return false
     }
     
     func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
