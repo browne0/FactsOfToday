@@ -360,7 +360,7 @@
             </objects>
             <point key="canvasLocation" x="1239" y="437"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="cow-GY-Yau">
             <objects>
                 <viewController id="0zi-i9-bwt" customClass="MapViewController" customModule="FactsOfToday" customModuleProvider="target" sceneMemberID="viewController">
@@ -384,7 +384,7 @@
                             <constraint firstAttribute="trailing" secondItem="8H1-up-tbn" secondAttribute="trailing" id="zZS-Hf-sKr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vHY-qz-2eZ">
+                    <navigationItem key="navigationItem" title="Map" id="vHY-qz-2eZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="pbw-6H-O8F">
                             <connections>
                                 <action selector="didPressDone:" destination="0zi-i9-bwt" id="bPB-fu-lT0"/>
