@@ -236,25 +236,33 @@ extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         
         dismissViewControllerAnimated(true, completion: nil)
         
-        let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
-        view = nibViewArray.objectAtIndex(0) as! DayPreviewView
+        let selectedDate =  dayView.date.convertedDate()
+        
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        
+        let componentsCurrentDate = calendar?.components([.Year,.Month,.Day], fromDate: currentDate!)
+        
+        let componentsSelectedDate = calendar?.components([.Year,.Month,.Day], fromDate: selectedDate!)
+        
+        componentsCurrentDate?.setValue((componentsSelectedDate?.month)!, forComponent: NSCalendarUnit.Month)
+        
+        componentsCurrentDate?.setValue((componentsSelectedDate?.day)!, forComponent: NSCalendarUnit.Day)
+        
+        currentDate = calendar!.dateFromComponents(componentsCurrentDate!)
         
         let printFormatter = NSDateFormatter()
         printFormatter.dateFormat = "MMM, d"
         
-        let cvdatestring = dayView.date.commonDescription
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "d MMM, yyyy"
-        
-        let cvdate = dateFormatter.dateFromString(cvdatestring)
-        
-        title = printFormatter.stringFromDate((cvdate)!)
+        title = printFormatter.stringFromDate((currentDate)!)
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "M"
-        let month = formatter.stringFromDate(cvdate!)
+        let month = formatter.stringFromDate(currentDate!)
         formatter.dateFormat = "d"
-        let day = formatter.stringFromDate(cvdate!)
+        let day = formatter.stringFromDate(currentDate!)
+        
+        if view != nil {
+            (swipeView.currentItemView as! DayPreviewView).reloadData(month, day: day)
+        } 
     }
 }
