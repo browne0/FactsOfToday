@@ -9,6 +9,9 @@
 import UIKit
 import CVCalendar
 
+let selectedDateKey = "selectedDateKey"
+let setDateKey = "setDateKey"
+
 protocol ColorSchemeDelegate {
     func didChangeColorScheme(barTintColor: UIColor, tintColor: UIColor)
 }
@@ -137,13 +140,32 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    private func saveLocally() {
+        NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: selectedDateKey)
+        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: setDateKey)
+    }
+    
+    private func readSelectedDate() {
+        if let setDate = NSUserDefaults.standardUserDefaults().objectForKey(setDateKey) as? NSDate{
+                let setDateString = setDate.getDate()
+                let currentDateString = NSDate().getDate()
+                if setDateString == currentDateString {
+                    let selectedDate = NSUserDefaults.standardUserDefaults().objectForKey(selectedDateKey) as? NSDate
+                    currentDate = selectedDate
+                    
+                }
+        }
+    }
 	
 	func incrementDate() {
 		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+        saveLocally()
 	}
 	
 	func decrementDate() {
 		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+        saveLocally()
 	}
 	
 	func didSelectRow(eventList: [Event]?) {
@@ -179,6 +201,8 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         super.viewDidLoad()
         
         setColorScheme()
+        
+        readSelectedDate()
         
         self.items = NSMutableArray() as [AnyObject]
         for i in 0 ..< 100 {
@@ -264,5 +288,31 @@ extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         if view != nil {
             (swipeView.currentItemView as! DayPreviewView).reloadData(month, day: day)
         } 
+    }
+}
+
+extension NSDate {
+    func toString() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy - HH:mm"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func getTime() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func getDate() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func getDateWithString(dateString: String)->NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.dateFromString(dateString)
     }
 }
