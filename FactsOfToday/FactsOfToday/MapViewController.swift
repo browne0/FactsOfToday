@@ -39,7 +39,15 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let nb = self.navigationController?.navigationBar
+        let colorScheme = ColorScheme.getInstance()
+        nb?.barTintColor = colorScheme.barTintColor
+        nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
+        nb?.tintColor = colorScheme.tintColor
+    }
+    
     /*
     // MARK: - Navigation
 

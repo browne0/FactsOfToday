@@ -29,8 +29,10 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
 - [x] As a user I would like to be able to choose to receive a daily event notification.
   - @tragessere
   - Currently using local notifications, might have to switch to push notifications to work better.
-- [ ] As a user I would like my date selection to persist until the next day.
-- [ ] As a user I would like to see the location an event took place on a map (for Wikipedia articles with the coordinates available)
+- [x] As a user I would like my date selection to persist until the next day.
+  - @darrell1994
+- [x] As a user I would like to see the location an event took place on a map (for Wikipedia articles with the coordinates available)
+  - @tragessere
 - [x] As a user I would like to share information and links via Twitter.
   - @darrell1994
 
