@@ -9,7 +9,11 @@
 import UIKit
 import CVCalendar
 
-class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate, UIPopoverPresentationControllerDelegate  {
+protocol ColorSchemeDelegate {
+    func didChangeColorScheme(barTintColor: UIColor, tintColor: UIColor)
+}
+
+class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate, UIPopoverPresentationControllerDelegate, ColorSchemeDelegate  {
 
     @IBOutlet weak var swipeView: SwipeView!
     var items: [AnyObject] = [AnyObject]()
@@ -22,6 +26,9 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     var calendarView: CVCalendarView!
     var menuView: CVCalendarMenuView!
     
+    var barTintColor: UIColor?
+    var tintColor: UIColor?
+        
 	//TODO: is there a better way to do this?
 	//The method for the current view being changed isn't called for the first view loaded
 	var firstDate = true
@@ -143,10 +150,35 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         self.performSegueWithIdentifier("ToDetailView", sender: eventList)
 	}
     
+    func setColorScheme() {
+        let colorHex = NSUserDefaults.standardUserDefaults().integerForKey(ColorSchemeKey)
+        if colorHex == 0xFFFFFF {
+            ColorScheme.getInstance().setToDefault()
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
+        } else {
+            ColorScheme.getInstance().setColorScheme(UIColor(netHex: colorHex), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), statusBarStyle: UIStatusBarStyle.LightContent)
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+        }
+        ColorScheme.getInstance().alreadySet = false
+        
+        viewWillAppear(false)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let colorScheme = ColorScheme.getInstance()
+        if !colorScheme.alreadySet {
+            let nb = self.navigationController?.navigationBar
+            nb?.barTintColor = colorScheme.barTintColor
+            nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
+            nb?.tintColor = colorScheme.tintColor
+            colorScheme.alreadySet = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setColorScheme()
         
         self.items = NSMutableArray() as [AnyObject]
         for i in 0 ..< 100 {
@@ -178,6 +210,11 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
             let vc = segue.destinationViewController as! DetailViewController
             vc.events = events
         }
+    }
+    
+    func didChangeColorScheme(barTintColor: UIColor, tintColor: UIColor) {
+        self.barTintColor = barTintColor
+        self.tintColor = tintColor
     }
 }
 

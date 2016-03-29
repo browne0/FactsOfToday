@@ -16,6 +16,8 @@
 		208658D61C8CB6D30088A06D /* DayPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208658D51C8CB6D30088A06D /* DayPreviewView.swift */; };
 		209EC0401CA7301C0093BBD8 /* WikipediaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EC03F1CA7301C0093BBD8 /* WikipediaClient.swift */; };
 		48B7D524699ABA962E83BCA6 /* Pods_FactsOfToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457D97927ABB94A106940C00 /* Pods_FactsOfToday.framework */; };
+		5B05E4761CA8703000D5C6AE /* ColorSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05E4751CA8703000D5C6AE /* ColorSchemeViewController.swift */; };
+		5B05E4781CA8814100D5C6AE /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05E4771CA8814100D5C6AE /* ColorScheme.swift */; };
 		5B85BE841CA1E3F2000E6D44 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */; };
 		5BBB5C491C8BA3BF0084D4D8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB5C481C8BA3BF0084D4D8 /* Event.swift */; };
 		5BBB5C4B1C8BA4650084D4D8 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB5C4A1C8BA4650084D4D8 /* Link.swift */; };
@@ -43,6 +45,8 @@
 		2F59758232D316F0126C5E96 /* Pods-FactsOfToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsOfToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday.debug.xcconfig"; sourceTree = "<group>"; };
 		3068870F561D196FA0A69D81 /* Pods-FactsOfToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsOfToday.release.xcconfig"; path = "Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday.release.xcconfig"; sourceTree = "<group>"; };
 		457D97927ABB94A106940C00 /* Pods_FactsOfToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsOfToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B05E4751CA8703000D5C6AE /* ColorSchemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeViewController.swift; sourceTree = "<group>"; };
+		5B05E4771CA8814100D5C6AE /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		5BBB5C481C8BA3BF0084D4D8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5BBB5C4A1C8BA4650084D4D8 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			children = (
 				5BBB5C481C8BA3BF0084D4D8 /* Event.swift */,
 				5BBB5C4A1C8BA4650084D4D8 /* Link.swift */,
+				5B05E4771CA8814100D5C6AE /* ColorScheme.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -102,12 +107,13 @@
 		5BCC74E61C8F754700F49EA7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
-				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
+				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */,
 				84DFC0CF1CA1EF2A0074C286 /* CalendarViewController.swift */,
 				2061E7AE1CA769EB006C1F02 /* MapViewController.swift */,
+				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
+				5B05E4751CA8703000D5C6AE /* ColorSchemeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -307,10 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DFC0D01CA1EF2A0074C286 /* CalendarViewController.swift in Sources */,
+				5B05E4781CA8814100D5C6AE /* ColorScheme.swift in Sources */,
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */,
 				84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */,
 				2047F6E71C9DCEC500403598 /* SettingsViewController.swift in Sources */,
+				5B05E4761CA8703000D5C6AE /* ColorSchemeViewController.swift in Sources */,
 				5B85BE841CA1E3F2000E6D44 /* WebViewController.swift in Sources */,
 				84B946801C8BB3F900D78BDE /* SwipeView.m in Sources */,
 				2049E2FE1CA0D7D7004F2A19 /* StaticDataTableViewController.m in Sources */,
