@@ -175,7 +175,8 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     }
     
     private func saveLocally() {
-        NSUserDefaults.standardUserDefaults().setObject(currentDate, forKey: selectedDateKey)
+        let convertedDate = currentDate?.convertedDate()
+        NSUserDefaults.standardUserDefaults().setObject(convertedDate, forKey: selectedDateKey)
         NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: setDateKey)
     }
     
