@@ -18,7 +18,8 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
   - @browne0, @tragessere
 - [x] As a user I would like to open a calendar view to pick from further dates more quickly.
   - @browne0
-- [ ] As a user I would like to tap the ‘today’ button to get back to the current day.
+- [x] As a user I would like to tap the ‘today’ button to get back to the current day.
+- - @browne0
 
 #Optional User Stories:
 
