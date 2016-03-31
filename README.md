@@ -18,7 +18,8 @@ https://docs.google.com/document/d/1igLWQiPm7hl5luzI21SjwbPIfBHDC8UXhIl9UfTw4cU/
   - @browne0, @tragessere
 - [x] As a user I would like to open a calendar view to pick from further dates more quickly.
   - @browne0
-- [ ] As a user I would like to tap the ‘today’ button to get back to the current day.
+- [x] As a user I would like to tap the ‘today’ button to get back to the current day.
+- - @browne0
 
 #Optional User Stories:
 
@@ -113,5 +114,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Video Walkthrough - Sprint 2
 
 ![sprint 2 demo](factsoftoday-demo-66%25.gif)
+
+## Video Walkthrough - Sprint 3
+
+![sprint3-demo](https://github.com/browne0/FactsOfToday/blob/master/factsOfToday-demo2.gif)
 
 GIF created with [LiceCape](http://www.cockos.com/licecap/).
