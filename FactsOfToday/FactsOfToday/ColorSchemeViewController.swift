@@ -58,7 +58,15 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ColorCell", forIndexPath: indexPath)
         cell.backgroundColor = UIColor(netHex: colors[indexPath.row])
+        
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let numberOfCellInRow : Int = 2
+        let padding : Int = 4
+        let collectionCellWidth : CGFloat = (self.view.frame.size.width/CGFloat(numberOfCellInRow))
+        return CGSize(width: collectionCellWidth , height: collectionCellWidth)
     }
 }
 

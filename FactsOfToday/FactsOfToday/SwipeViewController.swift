@@ -56,10 +56,10 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     func createCalendarView() {
         
         // CVCalendarView initialization with frame
-        self.calendarView = CVCalendarView(frame: CGRectMake(0, 90, 300, 350))
+        self.calendarView = CVCalendarView(frame: CGRectMake(0, 90, calendarViewController.view.frame.size.width-16, 350))
         
         // CVCalendarMenuView initialization with frame
-        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 60, 300, 15))
+        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 60, calendarViewController.view.frame.size.width-16, 15))
         
         
         // DateLabel initilization with frame
@@ -78,7 +78,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         // Today button initialization with frame
         todayButton = UIButton(frame: CGRectMake(0, 0, 26, 26))
         todayButton.tintColor = UIColor.blueColor()
-        todayButton.center = CGPointMake(263.5, 25)
+        todayButton.center = CGPointMake(calendarViewController.view.frame.size.width-42, 25)
         let todayButtonImage = UIImage(named: "todayButton")!.imageWithRenderingMode(.AlwaysTemplate)
         todayButton.setBackgroundImage(todayButtonImage, forState: .Normal)
         todayButton.addTarget(self, action: "onTodayPress:", forControlEvents: .TouchUpInside)
@@ -90,7 +90,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         self.menuView.menuViewDelegate = self
         
         calendarViewController.modalPresentationStyle = .Popover
-        calendarViewController.preferredContentSize = CGSizeMake(300,  (calendarView.bounds.height + menuView.bounds.height + 25))
+        calendarViewController.preferredContentSize = CGSizeMake(self.view.frame.size.width-8,  (calendarView.bounds.height + menuView.bounds.height + 25))
         let calendarViewFinal = calendarViewController.view
         calendarViewFinal.addSubview(calendarView)
         calendarViewFinal.addSubview(menuView)
