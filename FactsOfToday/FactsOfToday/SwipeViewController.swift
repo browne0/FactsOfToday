@@ -19,12 +19,16 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     var items: [AnyObject] = [AnyObject]()
     let calendarViewController: UIViewController = UIViewController()
 	
-	var currentDate: NSDate?
+	var currentDate: CVDate?
 	var previousPosition = 0
     var selectedDay: DayView!
 	
     var calendarView: CVCalendarView!
     var menuView: CVCalendarMenuView!
+    
+    var dateLabel: UILabel!
+    var todayButton: UIButton!
+    var animationFinished = true
     
     var barTintColor: UIColor?
     var tintColor: UIColor?
@@ -49,10 +53,32 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     func createCalendarView() {
         
         // CVCalendarView initialization with frame
-        self.calendarView = CVCalendarView(frame: CGRectMake(0, 50, 300, 350))
+        self.calendarView = CVCalendarView(frame: CGRectMake(0, 90, 300, 350))
         
         // CVCalendarMenuView initialization with frame
-        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 20, 300, 15))
+        self.menuView = CVCalendarMenuView(frame: CGRectMake(0, 60, 300, 15))
+        
+        
+        // DateLabel initilization with frame
+        dateLabel = UILabel(frame: CGRectMake(0, 0, 300, 21))
+        dateLabel.center = CGPointMake(calendarView.center.x, 25)
+        dateLabel.textAlignment = NSTextAlignment.Center
+        dateLabel.font = dateLabel.font.fontWithSize(22)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        
+        let convertedDate = currentDate?.convertedDate()
+        
+        dateLabel.text = dateFormatter.stringFromDate(convertedDate!)
+        
+        // Today button initialization with frame
+        todayButton = UIButton(frame: CGRectMake(0, 0, 26, 26))
+        todayButton.tintColor = UIColor.blueColor()
+        todayButton.center = CGPointMake(263.5, 25)
+        let todayButtonImage = UIImage(named: "todayButton")!.imageWithRenderingMode(.AlwaysTemplate)
+        todayButton.setBackgroundImage(todayButtonImage, forState: .Normal)
+        todayButton.addTarget(self, action: "onTodayPress:", forControlEvents: .TouchUpInside)
         
         // Calendar delegate
         self.calendarView.calendarDelegate = self
@@ -61,10 +87,12 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         self.menuView.menuViewDelegate = self
         
         calendarViewController.modalPresentationStyle = .Popover
-        calendarViewController.preferredContentSize = CGSizeMake(350, calendarView.bounds.height)
+        calendarViewController.preferredContentSize = CGSizeMake(300,  (calendarView.bounds.height + menuView.bounds.height + 25))
         let calendarViewFinal = calendarViewController.view
         calendarViewFinal.addSubview(calendarView)
         calendarViewFinal.addSubview(menuView)
+        calendarViewFinal.addSubview(dateLabel)
+        calendarViewFinal.addSubview(todayButton)
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
@@ -81,14 +109,16 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 			
 			let printFormatter = NSDateFormatter()
 			printFormatter.dateFormat = "MMM, d"
-			title = printFormatter.stringFromDate(currentDate!)
+            
+            let convertedDate = currentDate?.convertedDate()
+			title = printFormatter.stringFromDate(convertedDate!)
             
 			
 			let formatter = NSDateFormatter()
 			formatter.dateFormat = "M"
-			let month = formatter.stringFromDate(currentDate!)
+			let month = formatter.stringFromDate(convertedDate!)
 			formatter.dateFormat = "d"
-			let day = formatter.stringFromDate(currentDate!)
+			let day = formatter.stringFromDate(convertedDate!)
 			(view as! DayPreviewView).reloadData(month, day: day)
 		} else {
 			(view as! DayPreviewView).clearData()
@@ -116,14 +146,15 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
 		previousPosition = index
 		let printFormatter = NSDateFormatter()
 		printFormatter.dateFormat = "MMM, d"
+        let convertedDate = currentDate?.convertedDate()
 		
-		title = printFormatter.stringFromDate(currentDate!)
+		title = printFormatter.stringFromDate(convertedDate!)
 		
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = "M"
-		let month = formatter.stringFromDate(currentDate!)
+		let month = formatter.stringFromDate(convertedDate!)
 		formatter.dateFormat = "d"
-		let day = formatter.stringFromDate(currentDate!)
+		let day = formatter.stringFromDate(convertedDate!)
 		(view as! DayPreviewView).reloadData(month, day: day)
 	}
     
@@ -140,12 +171,18 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         // Dispose of any resources that can be recreated.
     }
 	
-	func incrementDate() {
-		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+    func incrementDate() {
+        var convertedDate = currentDate?.convertedDate()
+		convertedDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: convertedDate!, options: NSCalendarOptions(rawValue: 0))
+        
+        currentDate = CVDate(date: convertedDate!)
 	}
 	
 	func decrementDate() {
-		currentDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: currentDate!, options: NSCalendarOptions(rawValue: 0))
+        var convertedDate = currentDate?.convertedDate()
+		convertedDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: convertedDate!, options: NSCalendarOptions(rawValue: 0))
+        
+        currentDate = CVDate(date: convertedDate!)
 	}
 	
 	func didSelectRow(eventList: [Event]?) {
@@ -163,7 +200,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         }
         ColorScheme.getInstance().alreadySet = false
         
-        viewWillAppear(false)
+        viewWillAppear(true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -173,6 +210,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
             nb?.barTintColor = colorScheme.barTintColor
             nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
             nb?.tintColor = colorScheme.tintColor
+            todayButton.tintColor = colorScheme.barTintColor
             colorScheme.alreadySet = true
         }
     }
@@ -180,23 +218,22 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setColorScheme()
-        
         self.items = NSMutableArray() as [AnyObject]
         for i in 0 ..< 100 {
             items.append(Int(i))
         }
         
         if currentDate == nil {
-            currentDate = NSDate()
+            currentDate = CVDate(date: NSDate())
         }
+        
+        createCalendarView()
+        setColorScheme()
         
         swipeView.delegate = self
         swipeView.dataSource = self
         swipeView.pagingEnabled = true
         swipeView.wrapEnabled = true
-        
-        createCalendarView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -220,6 +257,14 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     }
 }
 
+extension SwipeViewController {
+    
+    func onTodayPress(sender: AnyObject) {
+        calendarView.toggleCurrentDayView()
+    }
+
+}
+
 extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
@@ -240,39 +285,95 @@ extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         return false
     }
     
+    func presentedDateUpdated(date: Date) {
+        let convertedDate = date.convertedDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        let monthCheck = dateFormatter.stringFromDate(convertedDate!)
+        
+        if dateLabel.text != monthCheck && self.animationFinished {
+            let updatedMonthLabel = UILabel()
+            updatedMonthLabel.textColor = dateLabel.textColor
+            updatedMonthLabel.font = dateLabel.font
+            updatedMonthLabel.textAlignment = .Center
+            
+            let convertedDate = date.convertedDate()
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MMMM"
+            
+            updatedMonthLabel.text = dateFormatter.stringFromDate(convertedDate!)
+            updatedMonthLabel.sizeToFit()
+            updatedMonthLabel.alpha = 0
+            updatedMonthLabel.center = self.dateLabel.center
+            
+            let offset = CGFloat(48)
+            updatedMonthLabel.transform = CGAffineTransformMakeTranslation(0, offset)
+            updatedMonthLabel.transform = CGAffineTransformMakeScale(1, 0.1)
+            
+            UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                self.animationFinished = false
+                self.dateLabel.transform = CGAffineTransformMakeTranslation(0, -offset)
+                self.dateLabel.transform = CGAffineTransformMakeScale(1, 0.1)
+                self.dateLabel.alpha = 0
+                
+                updatedMonthLabel.alpha = 1
+                updatedMonthLabel.transform = CGAffineTransformIdentity
+                
+                }) { _ in
+                    
+                    self.animationFinished = true
+                    self.dateLabel.frame = updatedMonthLabel.frame
+                    self.dateLabel.text = updatedMonthLabel.text
+                    self.dateLabel.transform = CGAffineTransformIdentity
+                    self.dateLabel.alpha = 1
+                    updatedMonthLabel.removeFromSuperview()
+            }
+            
+            self.view.insertSubview(updatedMonthLabel, aboveSubview: self.dateLabel)
+        }
+    }
+    
+    
+    
     func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
-        print("\(dayView.date.commonDescription) is selected!")
-        selectedDay = dayView
         
-        dismissViewControllerAnimated(true, completion: nil)
+            print("\(dayView.date.commonDescription) is selected!")
+            selectedDay = dayView
+            
+            dismissViewControllerAnimated(true, completion: nil)
+            
+            let selectedDate =  dayView.date.convertedDate()
+            
+            let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+            
+            var convertedDate = currentDate?.convertedDate()
+            
+            let componentsCurrentDate = calendar?.components([.Year,.Month,.Day], fromDate: convertedDate!)
+            
+            let componentsSelectedDate = calendar?.components([.Year,.Month,.Day], fromDate: selectedDate!)
+            
+            componentsCurrentDate?.setValue((componentsSelectedDate?.month)!, forComponent: NSCalendarUnit.Month)
+            
+            componentsCurrentDate?.setValue((componentsSelectedDate?.day)!, forComponent: NSCalendarUnit.Day)
+            
+            convertedDate = calendar!.dateFromComponents(componentsCurrentDate!)
         
-        let selectedDate =  dayView.date.convertedDate()
+            currentDate = CVDate(date: convertedDate!)
+            
+            let printFormatter = NSDateFormatter()
+            printFormatter.dateFormat = "MMM, d"
+            
+            title = printFormatter.stringFromDate((convertedDate)!)
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "M"
+            let month = formatter.stringFromDate(convertedDate!)
+            formatter.dateFormat = "d"
+            let day = formatter.stringFromDate(convertedDate!)
+            
+            if view != nil {
+                (swipeView.currentItemView as! DayPreviewView).reloadData(month, day: day)
+            }
         
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        
-        let componentsCurrentDate = calendar?.components([.Year,.Month,.Day], fromDate: currentDate!)
-        
-        let componentsSelectedDate = calendar?.components([.Year,.Month,.Day], fromDate: selectedDate!)
-        
-        componentsCurrentDate?.setValue((componentsSelectedDate?.month)!, forComponent: NSCalendarUnit.Month)
-        
-        componentsCurrentDate?.setValue((componentsSelectedDate?.day)!, forComponent: NSCalendarUnit.Day)
-        
-        currentDate = calendar!.dateFromComponents(componentsCurrentDate!)
-        
-        let printFormatter = NSDateFormatter()
-        printFormatter.dateFormat = "MMM, d"
-        
-        title = printFormatter.stringFromDate((currentDate)!)
-        
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "M"
-        let month = formatter.stringFromDate(currentDate!)
-        formatter.dateFormat = "d"
-        let day = formatter.stringFromDate(currentDate!)
-        
-        if view != nil {
-            (swipeView.currentItemView as! DayPreviewView).reloadData(month, day: day)
-        } 
     }
 }
