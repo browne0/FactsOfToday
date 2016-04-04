@@ -108,7 +108,6 @@
 				84B946771C8BA2F200D78BDE /* SwipeViewController.swift */,
 				5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */,
 				5B85BE831CA1E3F2000E6D44 /* WebViewController.swift */,
-				84DFC0CF1CA1EF2A0074C286 /* CalendarViewController.swift */,
 				2061E7AE1CA769EB006C1F02 /* MapViewController.swift */,
 				2047F6E61C9DCEC500403598 /* SettingsViewController.swift */,
 				5B05E4751CA8703000D5C6AE /* ColorSchemeViewController.swift */,
@@ -310,7 +309,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DFC0D01CA1EF2A0074C286 /* CalendarViewController.swift in Sources */,
 				5B05E4781CA8814100D5C6AE /* ColorScheme.swift in Sources */,
 				84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */,
 				207A9D201C8F84730040C4FA /* HistoryClient.swift in Sources */,

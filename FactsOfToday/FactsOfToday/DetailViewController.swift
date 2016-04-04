@@ -58,6 +58,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
             let twitterShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterShare.setInitialText("#factsOfToday " + events![indexPath.row].text!)
@@ -66,9 +67,16 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account in the Settings to share.", preferredStyle: UIAlertControllerStyle.Alert)
             
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: twitterHandler))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    
+    
+    func twitterHandler(alert: UIAlertAction) {
+        UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=TWITTER")!)
     }
     
     func openURL(url: NSURL) {
