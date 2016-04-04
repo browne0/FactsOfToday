@@ -31,7 +31,26 @@ class WikipediaClient {
 		} else {
 			return nil
 		}
+	}
+	
+	/// Parse an array of Wikipedia article URLs to return the URL format of that article's title
+	///
+	/// - note: The returned array of strings may not be the same size as the array of URLs that was passed to the function. Any URL that does not link to a Wikipedia article or is nil will not be added to the returned array.
+	///
+	/// - returns: An array of the titles that were successfully parsed from the given URLs
+	class func getArticleTitlesWithUrls(wikiUrls: [NSURL?]) -> [String] {
+		var titles = [String]()
 		
+		for url in wikiUrls {
+			if let match = url?.absoluteString.rangeOfString("^https:\\/\\/[a-zA-Z]{2}\\.(m\\.)?wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
+				let urlPath = url?.absoluteString.substringFromIndex(match.endIndex)
+				if let articleTitleUrl = (urlPath?.componentsSeparatedByString("#"))?[0] {
+					titles.append(articleTitleUrl)
+				}
+			}
+		}
+		
+		return titles
 	}
 	
 	/// Get the coordinates of a Wikipedia Article given the article title (in its URL format)
@@ -100,7 +119,7 @@ class WikipediaClient {
 	/// - note: If the article does not have a thumbnail, the title does not refer to a Wikipedia article, or if any network errors occur, the URL returned in the completion block will be nil
 	///
 	/// - returns: A coordinate object with the location of the subject of the Wikipedia article.
-	class func getThumbnailForArticlesWithTitle(titles: [String], completion: (imageUrls: [NSURL?]) -> () ) {
+	class func getThumbnailForArticlesWithTitle(titles: [String], completion: (imageUrls: [NSURL]) -> () ) {
 		if titles.count <= 0 {
 			completion(imageUrls: [NSURL]())
 			return
@@ -113,9 +132,11 @@ class WikipediaClient {
 		}
 		titleConcat = String(titleConcat.characters.dropLast())
 		
-		let url = NSURL(string: "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&pilimit=\(titles.count)&pithumbsize=150&format=json&titles=\(titleConcat)")
+		var urlString = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&pilimit=\(titles.count)&pithumbsize=150&format=json&titles=\(titleConcat)"
+		urlString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
+		let url = NSURL(string: urlString)
 		if url == nil {
-			print("error creating URL from string: \(titles)")
+			print("error creating URL from string: \(urlString)")
 			completion(imageUrls: [NSURL]())
 			return
 		}
