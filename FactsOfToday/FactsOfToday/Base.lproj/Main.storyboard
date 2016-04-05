@@ -320,7 +320,7 @@
         <!--Web View Controller-->
         <scene sceneID="7bs-4j-jy5">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fah-3V-T8R" customClass="WebViewController" customModule="FactsOfToday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" automaticallyAdjustsScrollViewInsets="NO" id="fah-3V-T8R" customClass="WebViewController" customModule="FactsOfToday" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TiI-4M-z2e"/>
                         <viewControllerLayoutGuide type="bottom" id="T9e-hT-DlZ"/>

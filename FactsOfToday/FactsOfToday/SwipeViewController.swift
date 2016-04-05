@@ -357,8 +357,6 @@ extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         }
     }
     
-    
-    
     func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
         
             print("\(dayView.date.commonDescription) is selected!")
