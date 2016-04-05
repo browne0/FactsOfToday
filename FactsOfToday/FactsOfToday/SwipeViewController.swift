@@ -81,7 +81,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         todayButton.center = CGPointMake(calendarViewController.view.frame.size.width-42, 25)
         let todayButtonImage = UIImage(named: "todayButton")!.imageWithRenderingMode(.AlwaysTemplate)
         todayButton.setBackgroundImage(todayButtonImage, forState: .Normal)
-        todayButton.addTarget(self, action: "onTodayPress:", forControlEvents: .TouchUpInside)
+        todayButton.addTarget(self, action: #selector(SwipeViewController.onTodayPress(_:)), forControlEvents: .TouchUpInside)
         
         // Calendar delegate
         self.calendarView.calendarDelegate = self
@@ -98,8 +98,8 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
         calendarViewFinal.addSubview(todayButton)
     }
     
-    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
-		
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView: UIView!) -> UIView! {
+		var view = reusingView
         if view == nil {
 			let nibViewArray = NSBundle.mainBundle().loadNibNamed("DayPreviewView", owner: self, options: nil) as NSArray
 			view = nibViewArray.objectAtIndex(0) as! DayPreviewView

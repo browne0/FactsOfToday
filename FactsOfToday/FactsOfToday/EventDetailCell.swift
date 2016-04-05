@@ -17,7 +17,7 @@ class EventDetailCell: UITableViewCell {
         didSet{
             let text = NSString(string: event.text!)
             detailLabel.text = text as String
-
+            
             if let links = event.links {
                 for link in links {
                     if let linkStr = link.title {

@@ -64,7 +64,7 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let numberOfCellInRow : Int = 2
-        let padding : Int = 4
+//        let padding : Int = 4
         let collectionCellWidth : CGFloat = (self.view.frame.size.width/CGFloat(numberOfCellInRow))
         return CGSize(width: collectionCellWidth , height: collectionCellWidth)
     }
