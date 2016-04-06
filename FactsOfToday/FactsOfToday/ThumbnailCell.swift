@@ -33,5 +33,13 @@ class ThumbnailCell: UICollectionViewCell {
 		if imageUrl == nil {
 			thumbnailImageView.image = UIImage(named: "Wikipedia_Logo")
 		}
+		
+		let background = UIView()
+		self.backgroundView = background
+		self.backgroundView?.backgroundColor = UIColor.clearColor()
+		
+		let selectedBackground = UIView()
+		self.selectedBackgroundView = selectedBackground
+		self.selectedBackgroundView?.backgroundColor = UIColor(red: 0.882, green: 0.882, blue: 0.882, alpha: 1)
 	}
 }

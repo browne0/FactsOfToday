@@ -284,10 +284,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pNT-4Z-a4b">
-                                                    <rect key="frame" x="0.0" y="41" width="328" height="160"/>
+                                                    <rect key="frame" x="0.0" y="37" width="328" height="164"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="160" id="AJa-Og-gRu"/>
+                                                        <constraint firstAttribute="height" constant="164" id="AJa-Og-gRu"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nqb-Ng-kj6">
                                                         <size key="itemSize" width="117" height="150"/>
@@ -297,20 +297,20 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thumbnailCell" id="Jkh-xz-sLD" customClass="ThumbnailCell" customModule="FactsOfToday" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="5" width="117" height="150"/>
+                                                            <rect key="frame" x="0.0" y="7" width="117" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="117" height="150"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-9d-GvN">
-                                                                        <rect key="frame" x="8" y="125" width="101" height="17"/>
+                                                                        <rect key="frame" x="8" y="129" width="101" height="13"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wikipedia_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3BY-em-gt8">
-                                                                        <rect key="frame" x="8" y="1" width="100" height="117"/>
+                                                                        <rect key="frame" x="8" y="5" width="100" height="117"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="117" id="CEE-CH-fIT"/>
                                                                             <constraint firstAttribute="width" constant="100" id="TbG-bd-2Q4"/>
@@ -322,7 +322,7 @@
                                                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="3BY-em-gt8" firstAttribute="centerX" secondItem="Jkh-xz-sLD" secondAttribute="centerX" id="GmM-lL-kUV"/>
-                                                                <constraint firstItem="3BY-em-gt8" firstAttribute="top" secondItem="Jkh-xz-sLD" secondAttribute="top" constant="1" id="MSX-Oo-En5"/>
+                                                                <constraint firstItem="3BY-em-gt8" firstAttribute="top" secondItem="Jkh-xz-sLD" secondAttribute="top" constant="5" id="MSX-Oo-En5"/>
                                                                 <constraint firstItem="y5z-9d-GvN" firstAttribute="trailing" secondItem="Jkh-xz-sLD" secondAttribute="trailingMargin" id="NsN-hh-aO9"/>
                                                                 <constraint firstItem="y5z-9d-GvN" firstAttribute="top" secondItem="3BY-em-gt8" secondAttribute="bottom" constant="7" id="Pmm-Fn-AHD"/>
                                                                 <constraint firstItem="y5z-9d-GvN" firstAttribute="bottom" secondItem="Jkh-xz-sLD" secondAttribute="bottomMargin" id="SzZ-Tz-kaq"/>
@@ -342,7 +342,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="pNT-4Z-a4b" secondAttribute="trailing" id="PMo-CD-6hp"/>
                                                 <constraint firstItem="H1i-h8-drO" firstAttribute="top" secondItem="Z8M-Yj-dee" secondAttribute="topMargin" constant="8" id="bA3-Gl-Qgr"/>
                                                 <constraint firstItem="pNT-4Z-a4b" firstAttribute="leading" secondItem="Z8M-Yj-dee" secondAttribute="leading" id="ic3-Yx-vsP"/>
-                                                <constraint firstItem="pNT-4Z-a4b" firstAttribute="top" secondItem="H1i-h8-drO" secondAttribute="bottom" constant="8" id="je7-Tk-2lW"/>
+                                                <constraint firstItem="pNT-4Z-a4b" firstAttribute="top" secondItem="H1i-h8-drO" secondAttribute="bottom" constant="4" id="je7-Tk-2lW"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="H1i-h8-drO" secondAttribute="bottom" id="kWD-oI-EY6"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="H1i-h8-drO" secondAttribute="trailing" constant="8" id="qab-Qi-jIf"/>
                                             </constraints>

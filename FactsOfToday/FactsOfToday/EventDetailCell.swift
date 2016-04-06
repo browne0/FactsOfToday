@@ -52,6 +52,7 @@ class EventDetailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         detailLabel.delegate = self
+		linkCollectionView.scrollsToTop = false
 		linkCollectionView.delegate = self
 		linkCollectionView.dataSource = self
 		linkCollectionView.reloadData()
