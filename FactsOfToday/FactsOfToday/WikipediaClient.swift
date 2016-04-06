@@ -114,20 +114,20 @@ class WikipediaClient {
 	}
 	
 	
-	/// Get the thumbnail image URL of a Wikipedia Article given the article title (in its URL format)
+	/// Get the thumbnail image URL of a Wikipedia Article given the article title
 	///
 	/// - note: If the article does not have a thumbnail, the title does not refer to a Wikipedia article, or if any network errors occur, the URL returned in the completion block will be nil
 	///
-	/// - returns: A coordinate object with the location of the subject of the Wikipedia article.
-	class func getThumbnailForArticlesWithTitle(titles: [String], completion: (imageUrls: [NSURL]) -> () ) {
+	/// - returns: The task used to download the thumbnail URLs
+	class func getThumbnailForArticlesWithTitle(titles: [String], urlTitles: [String], completion: (imageUrls: [NSURL?]) -> () ) -> NSURLSessionDataTask? {
 		if titles.count <= 0 {
 			completion(imageUrls: [NSURL]())
-			return
+			return nil
 		}
-		
+
 		var titleConcat = ""
 		
-		for title in titles {
+		for title in urlTitles {
 			titleConcat += title + "|"
 		}
 		titleConcat = String(titleConcat.characters.dropLast())
@@ -138,7 +138,7 @@ class WikipediaClient {
 		if url == nil {
 			print("error creating URL from string: \(urlString)")
 			completion(imageUrls: [NSURL]())
-			return
+			return nil
 		}
 		
 		let request = NSURLRequest(URL: url!)
@@ -147,10 +147,15 @@ class WikipediaClient {
 			delegate: nil,
 			delegateQueue:  NSOperationQueue.mainQueue()
 		)
-		
+
 		let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
 		  completionHandler: { (dataOrNil, response, error) in
+			
 			if error != nil {
+				if error!.code == NSURLErrorCancelled {
+					return
+				}
+				
 				print("error getting thumbnail for article:\n\(error?.localizedDescription)")
 				completion(imageUrls: [NSURL]())
 				return
@@ -162,19 +167,22 @@ class WikipediaClient {
 						if let pages = responseDictionary["query"]?["pages"] as? NSDictionary {
 							let pageIds = pages.allKeys as! [String]
 							
-							var imageUrls = [NSURL]()
+							var imageUrls = [NSURL?](count: pageIds.count, repeatedValue: nil)
 							
 							for pageId in pageIds {
-								let page = pages[pageId]
+								let page = pages[pageId] as! NSDictionary
 								
-								if page?.objectForKey("thumbnail") != nil {
-									let thumbnail = page!["thumbnail"] as! NSDictionary
+								
+								if page.objectForKey("thumbnail") != nil {
+									let thumbnail = page["thumbnail"] as! NSDictionary
 									
-									imageUrls.append(NSURL(string: thumbnail["source"] as! String)!)
+									let position = titles.indexOf({$0 == page["title"] as? String})
+									imageUrls[position!] = NSURL(string: thumbnail["source"] as! String)
 								}
 							}
 							
 							completion(imageUrls: imageUrls)
+							return
 						}
 					}
 				}
@@ -185,5 +193,6 @@ class WikipediaClient {
 			completion(imageUrls: [NSURL]())
 		});
 		task.resume()
+		return task
 	}
 }

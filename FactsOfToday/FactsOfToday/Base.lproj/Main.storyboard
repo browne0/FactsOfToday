@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bMr-3I-j60">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bMr-3I-j60">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -266,33 +266,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hJ1-ji-m6p">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="201" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hJ1-ji-m6p">
                                 <rect key="frame" x="-4" y="64" width="328" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventDetailCell" rowHeight="58" id="bYy-HS-v3i" customClass="EventDetailCell" customModule="FactsOfToday" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="328" height="58"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventDetailCell" rowHeight="210" id="bYy-HS-v3i" customClass="EventDetailCell" customModule="FactsOfToday" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="328" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bYy-HS-v3i" id="Z8M-Yj-dee">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="57"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="209"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-h8-drO" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="16" y="16" width="37" height="33"/>
+                                                    <rect key="frame" x="16" y="16" width="37" height="17"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pNT-4Z-a4b">
+                                                    <rect key="frame" x="0.0" y="41" width="328" height="160"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="160" id="AJa-Og-gRu"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nqb-Ng-kj6">
+                                                        <size key="itemSize" width="117" height="150"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thumbnailCell" id="Jkh-xz-sLD" customClass="ThumbnailCell" customModule="FactsOfToday" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="5" width="117" height="150"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="117" height="150"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-9d-GvN">
+                                                                        <rect key="frame" x="8" y="125" width="101" height="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wikipedia_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3BY-em-gt8">
+                                                                        <rect key="frame" x="8" y="1" width="100" height="117"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="117" id="CEE-CH-fIT"/>
+                                                                            <constraint firstAttribute="width" constant="100" id="TbG-bd-2Q4"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="3BY-em-gt8" firstAttribute="centerX" secondItem="Jkh-xz-sLD" secondAttribute="centerX" id="GmM-lL-kUV"/>
+                                                                <constraint firstItem="3BY-em-gt8" firstAttribute="top" secondItem="Jkh-xz-sLD" secondAttribute="top" constant="1" id="MSX-Oo-En5"/>
+                                                                <constraint firstItem="y5z-9d-GvN" firstAttribute="trailing" secondItem="Jkh-xz-sLD" secondAttribute="trailingMargin" id="NsN-hh-aO9"/>
+                                                                <constraint firstItem="y5z-9d-GvN" firstAttribute="top" secondItem="3BY-em-gt8" secondAttribute="bottom" constant="7" id="Pmm-Fn-AHD"/>
+                                                                <constraint firstItem="y5z-9d-GvN" firstAttribute="bottom" secondItem="Jkh-xz-sLD" secondAttribute="bottomMargin" id="SzZ-Tz-kaq"/>
+                                                                <constraint firstItem="y5z-9d-GvN" firstAttribute="leading" secondItem="Jkh-xz-sLD" secondAttribute="leadingMargin" id="lLr-Y3-PgK"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="thumbnailImageView" destination="3BY-em-gt8" id="3og-T9-UbF"/>
+                                                                <outlet property="titleLabel" destination="y5z-9d-GvN" id="FYa-Fv-5lf"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="H1i-h8-drO" firstAttribute="leading" secondItem="Z8M-Yj-dee" secondAttribute="leadingMargin" constant="8" id="7eg-HL-DT0"/>
+                                                <constraint firstItem="pNT-4Z-a4b" firstAttribute="bottom" secondItem="Z8M-Yj-dee" secondAttribute="bottomMargin" id="G3s-KM-gWq"/>
+                                                <constraint firstAttribute="trailing" secondItem="pNT-4Z-a4b" secondAttribute="trailing" id="PMo-CD-6hp"/>
                                                 <constraint firstItem="H1i-h8-drO" firstAttribute="top" secondItem="Z8M-Yj-dee" secondAttribute="topMargin" constant="8" id="bA3-Gl-Qgr"/>
+                                                <constraint firstItem="pNT-4Z-a4b" firstAttribute="leading" secondItem="Z8M-Yj-dee" secondAttribute="leading" id="ic3-Yx-vsP"/>
+                                                <constraint firstItem="pNT-4Z-a4b" firstAttribute="top" secondItem="H1i-h8-drO" secondAttribute="bottom" constant="8" id="je7-Tk-2lW"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="H1i-h8-drO" secondAttribute="bottom" id="kWD-oI-EY6"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="H1i-h8-drO" secondAttribute="trailing" constant="8" id="qab-Qi-jIf"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="kWD-oI-EY6"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="detailLabel" destination="H1i-h8-drO" id="BGg-YX-i7R"/>
+                                            <outlet property="linkCollectionView" destination="pNT-4Z-a4b" id="9sm-La-h78"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -460,5 +522,6 @@
     </scenes>
     <resources>
         <image name="Map Marker" width="22" height="22"/>
+        <image name="Wikipedia_Logo" width="202" height="217"/>
     </resources>
 </document>

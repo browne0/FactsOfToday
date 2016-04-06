@@ -50,9 +50,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventDetailCell") as! EventDetailCell
-        
-        cell.event = events?[indexPath.row]
-        cell.delegate = self
+		
+		cell.setValues(events?[indexPath.row], delegate: self)
         
         return cell
     }
