@@ -44,7 +44,7 @@ class SettingsViewController: StaticDataTableViewController {
 		cell(timePickerCell, setHidden: true)
 		reloadDataAnimated(false)
 		
-		notificationTimePicker.addTarget(self, action: "dateChanged:", forControlEvents: UIControlEvents.ValueChanged)
+		notificationTimePicker.addTarget(self, action: #selector(SettingsViewController.dateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		
 		if defaults.objectForKey(SettingsViewController.notificationTime) == nil {
 			let currentTime = NSDate()
