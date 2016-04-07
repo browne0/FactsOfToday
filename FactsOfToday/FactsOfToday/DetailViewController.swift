@@ -32,7 +32,8 @@ class DetailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToWebView" {
-            let url = sender as! NSURL
+            let cell = sender as! ThumbnailCell
+            let url = cell.url
             let vc = segue.destinationViewController as! WebViewController
             vc.url = url
         }
@@ -50,9 +51,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventDetailCell") as! EventDetailCell
-        
-        cell.event = events?[indexPath.row]
-        cell.delegate = self
+		
+		cell.setValues(events?[indexPath.row], delegate: self)
         
         return cell
     }
@@ -72,8 +72,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-    
-    
     
     func twitterHandler(alert: UIAlertAction) {
         UIApplication.sharedApplication().openURL(NSURL(string:"prefs:root=TWITTER")!)

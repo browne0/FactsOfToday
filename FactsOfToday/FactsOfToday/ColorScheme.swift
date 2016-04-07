@@ -14,7 +14,6 @@ class ColorScheme {
     var barTintColor: UIColor?
     var tintColor: UIColor?
     var titleColor: UIColor!
-    var statusBarStyle = UIStatusBarStyle.Default
     
     static var instance: ColorScheme?
     
@@ -25,15 +24,10 @@ class ColorScheme {
         return instance!
     }
     
-    init() {
-        
-    }
-    
-    func setColorScheme(barTintColor: UIColor?, tintColor: UIColor?, titleColor: UIColor, statusBarStyle: UIStatusBarStyle) {
+    func setColorScheme(barTintColor: UIColor?, tintColor: UIColor?, titleColor: UIColor) {
         self.barTintColor = barTintColor
         self.tintColor = tintColor
         self.titleColor = titleColor
-        self.statusBarStyle = statusBarStyle
         alreadySet = true
     }
     
@@ -41,6 +35,5 @@ class ColorScheme {
         barTintColor = nil
         tintColor = nil
         titleColor = UIColor.blackColor()
-        statusBarStyle = UIStatusBarStyle.Default
     }
 }

@@ -110,6 +110,7 @@ extension DayPreviewView: UITableViewDelegate, UITableViewDataSource {
 		cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
 		cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByTruncatingTail
 		cell?.textLabel?.numberOfLines = 3
+        cell?.textLabel?.font = UIFont(name: "Arial", size: 17)
 		
 		cell?.userInteractionEnabled = true
 		
