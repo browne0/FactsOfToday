@@ -22,7 +22,7 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.dataSource = self
         
         colors = [Int]()
-        colors.append(0xFFFFFF)
+        colors.append(0x000000)
         colors.append(0x85AE26)
         colors.append(0xFB5144)
         colors.append(0x338acc)
@@ -38,16 +38,12 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let colorScheme = ColorScheme.getInstance()
         let nb = self.navigationController?.navigationBar
-        if indexPath.row == 0 {
-            colorScheme.setToDefault()
-        } else {
-            colorScheme.setColorScheme(UIColor(netHex: colors[indexPath.row]), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), statusBarStyle: UIStatusBarStyle.LightContent)
-        }
+
+        colorScheme.setColorScheme(UIColor(netHex: colors[indexPath.row]), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor())
         colorScheme.alreadySet = false
         nb?.barTintColor = colorScheme.barTintColor
         nb?.titleTextAttributes = [NSForegroundColorAttributeName : colorScheme.titleColor]
         nb?.tintColor = colorScheme.tintColor
-        UIApplication.sharedApplication().setStatusBarStyle(colorScheme.statusBarStyle, animated: false)
         NSUserDefaults.standardUserDefaults().setInteger(colors[indexPath.row], forKey: ColorSchemeKey)
     }
     
@@ -64,7 +60,6 @@ class ColorSchemeViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let numberOfCellInRow : Int = 2
-//        let padding : Int = 4
         let collectionCellWidth : CGFloat = (self.view.frame.size.width/CGFloat(numberOfCellInRow))
         return CGSize(width: collectionCellWidth , height: collectionCellWidth)
     }

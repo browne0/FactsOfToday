@@ -213,13 +213,9 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     
     func setColorScheme() {
         let colorHex = NSUserDefaults.standardUserDefaults().integerForKey(ColorSchemeKey)
-        if colorHex == 0xFFFFFF {
-            ColorScheme.getInstance().setToDefault()
-            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
-        } else {
-            ColorScheme.getInstance().setColorScheme(UIColor(netHex: colorHex), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), statusBarStyle: UIStatusBarStyle.LightContent)
-            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
-        }
+
+        ColorScheme.getInstance().setColorScheme(UIColor(netHex: colorHex), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor())
+
         ColorScheme.getInstance().alreadySet = false
         
         viewWillAppear(true)
