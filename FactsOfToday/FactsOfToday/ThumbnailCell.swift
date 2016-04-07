@@ -12,7 +12,8 @@ import AFNetworking
 class ThumbnailCell: UICollectionViewCell {
 	@IBOutlet weak var thumbnailImageView: UIImageView!
 	@IBOutlet weak var titleLabel: UILabel!
-	
+    var url: NSURL?
+    
 	var title: String! {
 		didSet {
 			titleLabel.text = title

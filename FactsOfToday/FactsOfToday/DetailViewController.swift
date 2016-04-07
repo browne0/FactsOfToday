@@ -13,7 +13,7 @@ protocol WebViewDelegate {
     func openURL(url: NSURL)
 }
 
-class DetailViewController: UIViewController, UIViewControllerPreviewingDelegate {
+class DetailViewController: UIViewController {
     var events: [Event]?
     @IBOutlet weak var tableView: UITableView!
 
@@ -24,18 +24,6 @@ class DetailViewController: UIViewController, UIViewControllerPreviewingDelegate
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
-        
-        if traitCollection.forceTouchCapability == .Available {
-            /*
-             Register for `UIViewControllerPreviewingDelegate` to enable
-             "Peek" and "Pop".
-             (see: MasterViewController+UIViewControllerPreviewing.swift)
-             
-             The view controller will be automatically unregistered when it is
-             deallocated.
-             */
-            registerForPreviewingWithDelegate(self, sourceView: view)
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +32,8 @@ class DetailViewController: UIViewController, UIViewControllerPreviewingDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToWebView" {
-            let url = sender as! NSURL
+            let cell = sender as! ThumbnailCell
+            let url = cell.url
             let vc = segue.destinationViewController as! WebViewController
             vc.url = url
         }
@@ -90,14 +79,5 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource, WebV
     
     func openURL(url: NSURL) {
         self.performSegueWithIdentifier("ToWebView", sender: url)
-    }
-    
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WebViewController")
-        return vc
-    }
-
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
-        performSegueWithIdentifier("ToWebView", sender: nil)
     }
 }

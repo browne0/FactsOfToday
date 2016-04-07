@@ -89,13 +89,14 @@ extension EventDetailCell: TTTAttributedLabelDelegate, UICollectionViewDelegate,
 
 		cell.title = event.links![indexPath.row].title
 		cell.imageUrl = thumbnailUrls?[indexPath.row]
-		
+		cell.url = event.links![indexPath.row].url
+        
 		return cell
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)	{
 		collectionView.deselectItemAtIndexPath(indexPath, animated: false)
 		
-		delegate?.openURL(event.links![indexPath.row].url!)
+//		delegate?.openURL(event.links![indexPath.row].url!)
 	}
 }
