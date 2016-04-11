@@ -121,3 +121,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ![sprint3-demo](https://github.com/browne0/FactsOfToday/blob/master/factsOfToday-demo2.gif)
 
 GIF created with [LiceCape](http://www.cockos.com/licecap/).
+
+## Video Walkthrough - Sprint 4
+
+![sprint4-demo](https://github.com/browne0/FactsOfToday/blob/master/factsOfToday-demo4.gif)
+
+GIF created with [LiceCape](http://www.cockos.com/licecap/).
