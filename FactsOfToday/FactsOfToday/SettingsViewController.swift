@@ -138,17 +138,28 @@ class SettingsViewController: StaticDataTableViewController {
 	}
 	
 	@IBAction func onNotificationSwitched(sender: UISwitch) {
-		UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert], categories: nil))
-		
-		timePickerHidden = true
-		
-		cell(timeCell, setHidden: !sender.on)
-		cell(timePickerCell, setHidden: true)
-		reloadDataAnimated(true)
+        
+        if notificationSwitch.on == true {
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil))
+            
+            timePickerHidden = true
+            
+            cell(timeCell, setHidden: !sender.on)
+            cell(timePickerCell, setHidden: true)
+            reloadDataAnimated(true)
+        } else {
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            
+            timePickerHidden = false
+            cell(timeCell, setHidden: !sender.on)
+            cell(timePickerCell, setHidden: true)
+            reloadDataAnimated(true)
+        }
+        
 	}
 	
 	@IBAction func didPressDone(sender: AnyObject) {
-		dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
 	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

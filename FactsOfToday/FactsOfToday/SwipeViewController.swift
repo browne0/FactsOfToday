@@ -8,6 +8,7 @@
 
 import UIKit
 import CVCalendar
+import GoogleMobileAds
 
 let selectedDateKey = "selectedDateKey"
 let setDateKey = "setDateKey"
@@ -17,8 +18,11 @@ protocol ColorSchemeDelegate {
 }
 
 class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSource, DayPreviewDelegate, UIPopoverPresentationControllerDelegate, ColorSchemeDelegate  {
+    @IBOutlet weak var bannerView: GADBannerView!
 
     @IBOutlet weak var swipeView: SwipeView!
+    
+    
     var items: [AnyObject] = [AnyObject]()
     let calendarViewController: UIViewController = UIViewController()
 	
@@ -42,6 +46,12 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
+    }
+    
+    func loadAd() {
+        bannerView.adUnitID = "ca-app-pub-7283739744398858/4506715724"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(GADRequest())
     }
     
     @IBAction func onCalendarPress(sender: AnyObject) {
@@ -236,6 +246,7 @@ class SwipeViewController: UIViewController, SwipeViewDelegate, SwipeViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadAd()
         readSelectedDate()
         
         self.items = NSMutableArray() as [AnyObject]
@@ -283,6 +294,15 @@ extension SwipeViewController {
         calendarView.toggleCurrentDayView()
     }
 
+}
+
+extension SwipeViewController: GADBannerViewDelegate {
+    func adViewDidReceiveAd(bannerView: GADBannerView!) {
+        bannerView.alpha = 0
+        UIView.animateWithDuration(1, animations:  {
+            bannerView.alpha = 1
+        })
+    }
 }
 
 extension SwipeViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {

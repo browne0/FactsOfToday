@@ -24,6 +24,17 @@
 		5BBB5C4B1C8BA4650084D4D8 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB5C4A1C8BA4650084D4D8 /* Link.swift */; };
 		5BCC74E31C8F6F7E00F49EA7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */; };
 		5BCC74E51C8F712500F49EA7 /* EventDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC74E41C8F712500F49EA7 /* EventDetailCell.swift */; };
+		84688F971CF976A900B87CEB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688F931CF9725600B87CEB /* AdSupport.framework */; };
+		84688F991CF976B000B87CEB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688F981CF976B000B87CEB /* AudioToolbox.framework */; };
+		84688F9B1CF976B800B87CEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688F9A1CF976B800B87CEB /* AVFoundation.framework */; };
+		84688F9D1CF976C100B87CEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688F9C1CF976C100B87CEB /* CoreGraphics.framework */; };
+		84688F9F1CF976C900B87CEB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688F9E1CF976C900B87CEB /* CoreTelephony.framework */; };
+		84688FA21CF976D100B87CEB /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688FA01CF976D100B87CEB /* EventKit.framework */; };
+		84688FA31CF976D100B87CEB /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688FA11CF976D100B87CEB /* EventKitUI.framework */; };
+		84688FA51CF976D900B87CEB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688FA41CF976D900B87CEB /* MessageUI.framework */; };
+		84688FA71CF976E400B87CEB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688FA61CF976E400B87CEB /* StoreKit.framework */; };
+		84688FA91CF976F100B87CEB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688FA81CF976F100B87CEB /* SystemConfiguration.framework */; };
+		84688FAB1CF9771200B87CEB /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84688FAA1CF9771200B87CEB /* GoogleMobileAds.framework */; };
 		84B946641C864C7500D78BDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B946631C864C7500D78BDE /* AppDelegate.swift */; };
 		84B946691C864C7500D78BDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B946671C864C7500D78BDE /* Main.storyboard */; };
 		84B9466B1C864C7500D78BDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B9466A1C864C7500D78BDE /* Assets.xcassets */; };
@@ -31,6 +42,7 @@
 		84B946761C8BA19B00D78BDE /* SwipeView in Resources */ = {isa = PBXBuildFile; fileRef = 84B946751C8BA19B00D78BDE /* SwipeView */; };
 		84B946781C8BA2F200D78BDE /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B946771C8BA2F200D78BDE /* SwipeViewController.swift */; };
 		84B946801C8BB3F900D78BDE /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9467F1C8BB3F900D78BDE /* SwipeView.m */; };
+		84FE3B5D1CF97BEC00F62616 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FE3B5C1CF97BEC00F62616 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +65,18 @@
 		5BBB5C4A1C8BA4650084D4D8 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		5BCC74E21C8F6F7E00F49EA7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5BCC74E41C8F712500F49EA7 /* EventDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailCell.swift; sourceTree = "<group>"; };
+		84688F931CF9725600B87CEB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		84688F951CF975F100B87CEB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		84688F981CF976B000B87CEB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		84688F9A1CF976B800B87CEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		84688F9C1CF976C100B87CEB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84688F9E1CF976C900B87CEB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		84688FA01CF976D100B87CEB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		84688FA11CF976D100B87CEB /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		84688FA41CF976D900B87CEB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		84688FA61CF976E400B87CEB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		84688FA81CF976F100B87CEB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		84688FAA1CF9771200B87CEB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		84B946601C864C7400D78BDE /* FactsOfToday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactsOfToday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B946631C864C7500D78BDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B946681C864C7500D78BDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +86,7 @@
 		84B946751C8BA19B00D78BDE /* SwipeView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwipeView; sourceTree = "<group>"; };
 		84B946771C8BA2F200D78BDE /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		84B9467F1C8BB3F900D78BDE /* SwipeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = FactsOfToday/SwipeView/SwipeView.m; sourceTree = "<group>"; };
+		84FE3B5C1CF97BEC00F62616 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +94,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84688FA91CF976F100B87CEB /* SystemConfiguration.framework in Frameworks */,
+				84688FA71CF976E400B87CEB /* StoreKit.framework in Frameworks */,
+				84688FA51CF976D900B87CEB /* MessageUI.framework in Frameworks */,
+				84688FA21CF976D100B87CEB /* EventKit.framework in Frameworks */,
+				84688FA31CF976D100B87CEB /* EventKitUI.framework in Frameworks */,
+				84688F9F1CF976C900B87CEB /* CoreTelephony.framework in Frameworks */,
+				84688FAB1CF9771200B87CEB /* GoogleMobileAds.framework in Frameworks */,
+				84688F9D1CF976C100B87CEB /* CoreGraphics.framework in Frameworks */,
+				84688F9B1CF976B800B87CEB /* AVFoundation.framework in Frameworks */,
+				84688F991CF976B000B87CEB /* AudioToolbox.framework in Frameworks */,
+				84688F971CF976A900B87CEB /* AdSupport.framework in Frameworks */,
 				48B7D524699ABA962E83BCA6 /* Pods_FactsOfToday.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +174,17 @@
 		7803CD9C004B94546765DBB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84688FA81CF976F100B87CEB /* SystemConfiguration.framework */,
+				84688FA61CF976E400B87CEB /* StoreKit.framework */,
+				84688FA41CF976D900B87CEB /* MessageUI.framework */,
+				84688FA01CF976D100B87CEB /* EventKit.framework */,
+				84688FA11CF976D100B87CEB /* EventKitUI.framework */,
+				84688F9E1CF976C900B87CEB /* CoreTelephony.framework */,
+				84688F9C1CF976C100B87CEB /* CoreGraphics.framework */,
+				84688F9A1CF976B800B87CEB /* AVFoundation.framework */,
+				84688F981CF976B000B87CEB /* AudioToolbox.framework */,
+				84688F951CF975F100B87CEB /* GoogleMobileAds.framework */,
+				84688F931CF9725600B87CEB /* AdSupport.framework */,
 				457D97927ABB94A106940C00 /* Pods_FactsOfToday.framework */,
 			);
 			name = Frameworks;
@@ -146,6 +193,7 @@
 		84B946571C864C7400D78BDE = {
 			isa = PBXGroup;
 			children = (
+				84688FAA1CF9771200B87CEB /* GoogleMobileAds.framework */,
 				2049E2FD1CA0D7D7004F2A19 /* StaticDataTableViewController.m */,
 				84B9467F1C8BB3F900D78BDE /* SwipeView.m */,
 				84B946621C864C7400D78BDE /* FactsOfToday */,
@@ -176,6 +224,7 @@
 				84B9466A1C864C7500D78BDE /* Assets.xcassets */,
 				84B9466C1C864C7500D78BDE /* LaunchScreen.storyboard */,
 				84B9466F1C864C7500D78BDE /* Info.plist */,
+				84FE3B5C1CF97BEC00F62616 /* GoogleService-Info.plist */,
 				2049E2FA1CA0C6B3004F2A19 /* StaticTableViewController */,
 				84B946751C8BA19B00D78BDE /* SwipeView */,
 			);
@@ -189,12 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84B946721C864C7500D78BDE /* Build configuration list for PBXNativeTarget "FactsOfToday" */;
 			buildPhases = (
-				FDF0D270C8A513BC57B6E728 /* Check Pods Manifest.lock */,
+				FDF0D270C8A513BC57B6E728 /* 📦 Check Pods Manifest.lock */,
 				84B9465C1C864C7400D78BDE /* Sources */,
 				84B9465D1C864C7400D78BDE /* Frameworks */,
 				84B9465E1C864C7400D78BDE /* Resources */,
-				DC3CBDC3FC594888F8B7FA5F /* Embed Pods Frameworks */,
-				DFBBA5E10D288C42DF77AD67 /* Copy Pods Resources */,
+				DC3CBDC3FC594888F8B7FA5F /* 📦 Embed Pods Frameworks */,
+				DFBBA5E10D288C42DF77AD67 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,7 +266,7 @@
 				TargetAttributes = {
 					84B9465F1C864C7400D78BDE = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 4MR49B8559;
+						DevelopmentTeam = QWX93P2PHV;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -255,20 +304,21 @@
 				84B946691C864C7500D78BDE /* Main.storyboard in Resources */,
 				2049E2FB1CA0C6B3004F2A19 /* StaticTableViewController in Resources */,
 				2001358E1C8BB1C200C0A36F /* DayPreviewView.xib in Resources */,
+				84FE3B5D1CF97BEC00F62616 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DC3CBDC3FC594888F8B7FA5F /* Embed Pods Frameworks */ = {
+		DC3CBDC3FC594888F8B7FA5F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,14 +326,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFBBA5E10D288C42DF77AD67 /* Copy Pods Resources */ = {
+		DFBBA5E10D288C42DF77AD67 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,14 +341,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FactsOfToday/Pods-FactsOfToday-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FDF0D270C8A513BC57B6E728 /* Check Pods Manifest.lock */ = {
+		FDF0D270C8A513BC57B6E728 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +422,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Malik Browne (3PZWV365ZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Malik Browne (3PZWV365ZY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -394,6 +445,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b205f835-0966-4cf1-afeb-8a6e4575eaa9";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -417,7 +469,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Malik Browne (3PZWV365ZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Malik Browne (3PZWV365ZY)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -432,6 +485,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "b205f835-0966-4cf1-afeb-8a6e4575eaa9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -446,15 +500,20 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Google-Mobile-Ads-SDK/Frameworks",
+				);
 				INFOPLIST_FILE = FactsOfToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = factsOfToday.FactsOfToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.malikbrowne.factsOfToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Header.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -467,14 +526,19 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/Google-Mobile-Ads-SDK/Frameworks",
+				);
 				INFOPLIST_FILE = FactsOfToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = factsOfToday.FactsOfToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.malikbrowne.factsOfToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Header.h;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;

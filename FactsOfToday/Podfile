@@ -1,4 +1,7 @@
 # Uncomment this line to define a global platform for your project
+
+source 'https://github.com/CocoaPods/Specs.git'
+
 # platform :ios, '8.0'
 # Uncomment this line if you're using Swift
 use_frameworks!
@@ -7,5 +10,7 @@ target 'FactsOfToday' do
 	pod 'CVCalendar', '~> 1.2'
 	pod 'AFNetworking'
 	pod 'TTTAttributedLabel'
+	pod 'Firebase/Core'
+	pod 'Firebase/AdMob'
 end
 

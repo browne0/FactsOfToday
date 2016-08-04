@@ -60,14 +60,11 @@ private extension CVCalendarTouchController {
                 calendarView.didSelectDayView(dayView)
                 
             case .Range(.Started):
-//                print("Received start of range selection.")
-                break
+                print("Received start of range selection.")
             case .Range(.Changed):
-//                print("Received change of range selection.")
-                break
+                print("Received change of range selection.")
             case .Range(.Ended):
-//                print("Received end of range selection.")
-                break
+                print("Received end of range selection.")
             }
         }
     }
