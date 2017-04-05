@@ -14,13 +14,18 @@ class WebViewController: UIViewController, UIWebViewDelegate {
 	@IBOutlet weak var mapButton: UIBarButtonItem!
 	var url: NSURL?
 	var coordinates: CLLocationCoordinate2D?
+    var articleTitle: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let url = url {
+            let newUrlComps = NSURLComponents()
+            newUrlComps.scheme = "https"
+            newUrlComps.host = "en.m.wikipedia.org"
+            newUrlComps.path = url.path
 			webView.delegate = self
-            webView.loadRequest(NSURLRequest(URL: url))
+            webView.loadRequest(NSURLRequest(URL: newUrlComps.URL!))
         }
     }
     
@@ -34,7 +39,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
 			let mapViewController = navigationController.topViewController as! MapViewController
 			
 			mapViewController.coordinates = coordinates
-//			mapViewController.articleTitle = link?.title
+			mapViewController.articleTitle = articleTitle
 		}
 	}
 
@@ -45,7 +50,8 @@ class WebViewController: UIViewController, UIWebViewDelegate {
 	func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 		let url = request.URL
 		
-		if let articleTitle = WikipediaClient.getArticleTitleUrl(url) {
+		if let articleTitle = WikipediaClient.getArticleTitleUrlMobile(url) {
+            self.articleTitle = articleTitle
 			WikipediaClient.getCoordinatesForArticleWithTitle(articleTitle, completion: { (coordinates) in
 				if let coordinates = coordinates {
 					self.mapButton.enabled = true

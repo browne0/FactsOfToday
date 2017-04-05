@@ -32,6 +32,28 @@ class WikipediaClient {
 			return nil
 		}
 	}
+    
+    /// Parse a URL for a Wikipedia article to get the title of the article (in the URL format)
+    ///
+    /// - note: If the URL is nil or is not a link to a Wikipedia article, the return value will be nil
+    ///
+    /// - returns: The portion of the URL that refers to the Wikipedia article's title.
+    class func getArticleTitleUrlMobile(wikiUrl: NSURL?) -> String? {
+        if wikiUrl == nil {
+            return nil
+        }
+        
+        if let match = wikiUrl?.absoluteString.rangeOfString("^https:\\/{2}en.m.wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
+            let urlPath = wikiUrl?.absoluteString.substringFromIndex(match.endIndex)
+            if let articleTitleUrl = (urlPath?.componentsSeparatedByString("#"))?[0] {
+                return articleTitleUrl
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
 	
 	/// Parse an array of Wikipedia article URLs to return the URL format of that article's title
 	///
