@@ -182,9 +182,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if defaults.objectForKey(SettingsViewController.notificationLastUpdate) != nil &&
 				defaults.stringForKey(SettingsViewController.notificationLastUpdate) == currentDateString {
 			
-			return "Interesting fact: The " + defaults.stringForKey(SettingsViewController.notificationDescription)! + " Find out more interesting things on Facts Of Today"
+			return "Interesting fact: The " + defaults.stringForKey(SettingsViewController.notificationDescription)! + " Find out more interesting things on Facts Of Today!"
 		} else {
-			return "Want to learn a cool new fact? Check out what important events happened today!"
+            let randPromptIndex = Int(arc4random_uniform(4))
+            switch (randPromptIndex) {
+            case 0:
+                return "Want to learn a cool new fact? Check out what interesting events happened today!"
+            case 1:
+                return "Come and explore in Facts of Today to find out what interesting events happened today!"
+            case 2:
+                return "It's about that time! Come and check out what different events happened today on Facts Of Today!"
+            case 3:
+                return "Ever wondered what happened today in history? Come find out on Facts of Today!"
+            default:
+                return "Come and expand your knowledge on what happened today in history on Facts of Today!"
+            }
+            
+			
 		}
 	}
 

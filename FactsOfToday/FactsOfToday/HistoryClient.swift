@@ -29,10 +29,35 @@ class HistoryClient {
 				
 				if let data = dataOrNil {
 					if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary {
-						let events = Event.getEventObjectsWithDictionary(responseDictionary, type: Type.EVENT)
+                        
+                        if let unsortedEvents = responseDictionary["data"]!["Events"] as? NSArray {
+                            let descriptor = NSSortDescriptor(key: "year", ascending: false, comparator: { (obj1, obj2) -> NSComparisonResult in
+                                if (obj1.integerValue > obj2.integerValue) {
+                                    return NSComparisonResult.OrderedDescending
+                                }
+                                if (obj1.integerValue < obj2.integerValue) {
+                                    return NSComparisonResult.OrderedAscending
+                                }
+                                
+                                return NSComparisonResult.OrderedSame
+                                
+                            })
+                            let events: NSArray = unsortedEvents.sortedArrayUsingDescriptors([descriptor])
+                            
+                            
+                            for i in 0 ..< events.count {
+                                var dictResult = events.objectAtIndex(i) as! NSDictionary
+                            }
+                            
+
+                            
+                        }
+                        
+                        
+						let events2 = Event.getEventObjectsWithDictionary(responseDictionary, type: Type.EVENT)
 						let births = Event.getEventObjectsWithDictionary(responseDictionary, type: Type.BIRTH)
 						let deaths = Event.getEventObjectsWithDictionary(responseDictionary, type: Type.DEATH)
-						completion(events: events, births: births, deaths: deaths)
+						completion(events: events2, births: births, deaths: deaths)
 						return
 					}
 				}
@@ -157,4 +182,17 @@ class HistoryClient {
 		});
 		task.resume()
 	}
+}
+
+private func convertJsonObjectToDictionary(arrayElement: AnyObject) -> [String:AnyObject]? {
+    if let data = arrayElement.dataUsingEncoding(NSUTF8StringEncoding) {
+        do {
+            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+        } catch let error as NSError {
+            print(error)
+        } catch {
+            print("error converting dictionary")
+        }
+    }
+    return nil
 }

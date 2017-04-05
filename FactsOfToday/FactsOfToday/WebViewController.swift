@@ -23,7 +23,10 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             webView.loadRequest(NSURLRequest(URL: url))
         }
     }
-	
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        print(error);
+    }
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "toMapView" {

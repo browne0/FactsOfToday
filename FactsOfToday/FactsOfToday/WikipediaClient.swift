@@ -21,7 +21,7 @@ class WikipediaClient {
 			return nil
 		}
 		
-		if let match = wikiUrl?.absoluteString.rangeOfString("^https:\\/\\/[a-zA-Z]{2}\\.(m\\.)?wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
+		if let match = wikiUrl?.absoluteString.rangeOfString("^https:\\/{2}wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
 			let urlPath = wikiUrl?.absoluteString.substringFromIndex(match.endIndex)
 			if let articleTitleUrl = (urlPath?.componentsSeparatedByString("#"))?[0] {
 				return articleTitleUrl
@@ -42,7 +42,7 @@ class WikipediaClient {
 		var titles = [String]()
 		
 		for url in wikiUrls {
-			if let match = url?.absoluteString.rangeOfString("^https:\\/\\/[a-zA-Z]{2}\\.(m\\.)?wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
+			if let match = url?.absoluteString.rangeOfString("^https:\\/{2}wikipedia\\.org\\/wiki\\/", options: .RegularExpressionSearch) {
 				let urlPath = url?.absoluteString.substringFromIndex(match.endIndex)
 				if let articleTitleUrl = (urlPath?.componentsSeparatedByString("#"))?[0] {
 					titles.append(articleTitleUrl)
@@ -167,7 +167,7 @@ class WikipediaClient {
 						if let pages = responseDictionary["query"]?["pages"] as? NSDictionary {
 							let pageIds = pages.allKeys as! [String]
 							
-							var imageUrls = [NSURL?](count: pageIds.count, repeatedValue: nil)
+							var imageUrls = [NSURL?](count: pageIds.count + 1, repeatedValue: nil)
 							
 							for pageId in pageIds {
 								let page = pages[pageId] as! NSDictionary
